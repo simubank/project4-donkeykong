@@ -3,9 +3,12 @@ package com.levelup.td.tdlevelupquest;
 import android.app.Activity;
 import android.content.Context;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,22 +20,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Vector;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 public class LaunchActivity extends AppCompatActivity {
 
@@ -42,8 +38,14 @@ public class LaunchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
+        View someView = findViewById(R.id.textView);
+        View root = someView.getRootView();
+        root.getBackground().setColorFilter(Color.parseColor("#35B234"), PorterDuff.Mode.DARKEN);
+
+
         String url = "https://api.uclassify.com/v1/uClassify/Topics/classify/?readKey=sXvXN9MJP0DE&text=macbook";
         JsonCall(url);
+        initDrawer();
     }
 
     public void JsonCall (String URL){
@@ -64,6 +66,31 @@ public class LaunchActivity extends AppCompatActivity {
         );
         requestQueue.add(jsonObjectRequest);
     }
+
+    public void initDrawer (){
+
+        Drawer result = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(new Toolbar(LaunchActivity.this))
+                .withActionBarDrawerToggle(false)
+                .withTranslucentStatusBar(false)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withIdentifier(1).withName("number 1"),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withIdentifier(2).withName("number 2").withIcon(GoogleMaterial.Icon.gmd_cake),
+                        new SecondaryDrawerItem().withName("number 3").withIcon(GoogleMaterial.Icon.gmd_games)
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        return true;
+                    }
+                })
+                .build();
+    }
+
+
+
 }
 
 
