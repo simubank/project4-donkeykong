@@ -3,8 +3,10 @@ package com.levelup.td.tdlevelupquest;
 import android.app.Activity;
 import android.content.Context;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,22 +32,37 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import org.json.JSONObject;
 
-public class LaunchActivity extends AppCompatActivity {
+public class LaunchActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView t1;
+    Button b1;
+
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.firstbutton:
+                Intent intent = new Intent(LaunchActivity.this, MainScreenActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
+
         View someView = findViewById(R.id.textView);
         View root = someView.getRootView();
         root.getBackground().setColorFilter(Color.parseColor("#35B234"), PorterDuff.Mode.DARKEN);
 
 
-        String url = "https://api.uclassify.com/v1/uClassify/Topics/classify/?readKey=sXvXN9MJP0DE&text=macbook";
-        JsonCall(url);
+        //String url = "https://api.uclassify.com/v1/uClassify/Topics/classify/?readKey=sXvXN9MJP0DE&text=macbook";
+        //JsonCall(url);
         initDrawer();
+
+        b1 = findViewById(R.id.firstbutton);
+        b1.setOnClickListener(this);
     }
 
     public void JsonCall (String URL){
