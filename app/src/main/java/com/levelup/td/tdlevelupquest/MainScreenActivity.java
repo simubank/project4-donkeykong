@@ -71,12 +71,12 @@ public class MainScreenActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
-                String toastMsg = String.format("Place: %s", place.getName());
-                Log.d("wwe", "value:"+place.getPlaceTypes());
-                Log.d("wwe", "value:"+place.getId());
-                Log.d("wwe", "value:"+place.getPriceLevel());
-                Log.d("wwe", "value:"+place.getLatLng());
-                Log.d("wwe", "value:"+place.getRating());
+                String toastMsg = String.format("Place Name: %s", place.getName());
+                Log.d("wwe", "Place Category Index:"+place.getPlaceTypes());
+                Log.d("wwe", "Place ID:"+place.getId());
+                Log.d("wwe", "Place Price Level:"+place.getPriceLevel());
+                Log.d("wwe", "Place Location:"+place.getLatLng());
+                Log.d("wwe", "Place Rating:"+place.getRating());
                 Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
             }
         }
