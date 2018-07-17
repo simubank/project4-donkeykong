@@ -97,10 +97,10 @@ public class MainScreenActivity extends AppCompatActivity {
                 Log.d("wwe", "Place Location:"+place.getLatLng());
                 Log.d("wwe", "Place Rating:"+place.getRating());
 
-                Double NELat = place.getLatLng().latitude + 10;
-                Double NELong = place.getLatLng().longitude + 10;
-                Double SWLat = place.getLatLng().latitude - 10;
-                Double SWLong = place.getLatLng().longitude - 10;
+                Double NELat = place.getLatLng().latitude + 1;
+                Double NELong = place.getLatLng().longitude + 1;
+                Double SWLat = place.getLatLng().latitude - 1;
+                Double SWLong = place.getLatLng().longitude - 1;
                 LatLng NELatlng = new LatLng(NELat, NELong);
                 LatLng SWLatlng = new LatLng(SWLat, SWLong);
                 LatLngBounds newbounds = new LatLngBounds(SWLatlng,NELatlng);
@@ -160,11 +160,11 @@ public class MainScreenActivity extends AppCompatActivity {
             protected void onPostExecute(Task<AutocompletePredictionBufferResponse> s) {
                 super.onPostExecute(s);
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(800);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Log.d("wwe", "Query completed. Received " + s.getResult().getCount()+ " predictions.");
+                Log.d("wwe", "Query completed. Received " + s.getResult().get(0).getFullText(null)+ " predictions.");
             }
         }.execute();
     }
