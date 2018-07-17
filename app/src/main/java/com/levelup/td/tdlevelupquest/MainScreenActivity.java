@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -31,6 +32,7 @@ import com.google.android.gms.tasks.RuntimeExecutionException;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 
+import java.util.Timer;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -102,14 +104,9 @@ public class MainScreenActivity extends AppCompatActivity {
                 LatLng NELatlng = new LatLng(NELat, NELong);
                 LatLng SWLatlng = new LatLng(SWLat, SWLong);
                 LatLngBounds newbounds = new LatLngBounds(SWLatlng,NELatlng);
-                Task<AutocompletePredictionBufferResponse> results =
-                        mGeoDataClient.getAutocompletePredictions("restaurants", newbounds,
-                                null);
-                Log.d("wwe", "Query completed. Received " + newbounds
-                        + " predictions.");
 
-                Log.d("wwe", "Query completed. Received " + results
-                        + " predictions.");
+                getPrediction(newbounds);
+
 
 //                try {
 //                    AutocompletePredictionBufferResponse autocompletePredictions = results.getResult();
@@ -149,4 +146,27 @@ public class MainScreenActivity extends AppCompatActivity {
             // permissions this app might request
         }
     }
+    public void getPrediction(final LatLngBounds newbounds){
+        new AsyncTask<Void,Void,Task<AutocompletePredictionBufferResponse>>(){
+            @Override
+            protected Task<AutocompletePredictionBufferResponse> doInBackground(Void... voids) {
+                Task<AutocompletePredictionBufferResponse> results =
+                        mGeoDataClient.getAutocompletePredictions("restaurants", newbounds,
+                                null);
+                return results;
+            }
+
+            @Override
+            protected void onPostExecute(Task<AutocompletePredictionBufferResponse> s) {
+                super.onPostExecute(s);
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Log.d("wwe", "Query completed. Received " + s.getResult().getCount()+ " predictions.");
+            }
+        }.execute();
+    }
+
 }
