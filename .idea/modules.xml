@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TDLevelUpQuest.iml" filepath="$PROJECT_DIR$/TDLevelUpQuest.iml" />
+      <module fileurl="file://C:\Users\Mikeb\Documents\TDHacks\project4-donkeykong\TDLevelUpQuest.iml" filepath="C:\Users\Mikeb\Documents\TDHacks\project4-donkeykong\TDLevelUpQuest.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Mikeb\Documents\TDHacks\project4-donkeykong\app\app.iml" filepath="C:\Users\Mikeb\Documents\TDHacks\project4-donkeykong\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/project4-donkeykong.iml" filepath="$PROJECT_DIR$/project4-donkeykong.iml" />
+      <module fileurl="file://C:\Users\Mikeb\Documents\TDHacks\project4-donkeykong\project4-donkeykong.iml" filepath="C:\Users\Mikeb\Documents\TDHacks\project4-donkeykong\project4-donkeykong.iml" />
     </modules>
   </component>
 </project>
