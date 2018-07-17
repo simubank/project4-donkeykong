@@ -9,6 +9,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.location.places.GeoDataClient;
@@ -33,6 +35,13 @@ public class MainScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
+        Button btn = findViewById(R.id.pickerButton);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkThisOut();
+            }
+        });
         Log.d("wow", "onCreate: wwwwww");
         // Construct a GeoDataClient.
         mGeoDataClient = Places.getGeoDataClient(this, null);
@@ -64,6 +73,10 @@ public class MainScreenActivity extends AppCompatActivity {
                 Place place = PlacePicker.getPlace(data, this);
                 String toastMsg = String.format("Place: %s", place.getName());
                 Log.d("wwe", "value:"+place.getPlaceTypes());
+                Log.d("wwe", "value:"+place.getId());
+                Log.d("wwe", "value:"+place.getPriceLevel());
+                Log.d("wwe", "value:"+place.getLatLng());
+                Log.d("wwe", "value:"+place.getRating());
                 Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
             }
         }
@@ -77,9 +90,6 @@ public class MainScreenActivity extends AppCompatActivity {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    checkThisOut();
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
                 } else {
 
                     // permission denied, boo! Disable the
