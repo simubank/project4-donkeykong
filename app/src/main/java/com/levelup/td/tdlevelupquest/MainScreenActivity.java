@@ -104,21 +104,15 @@ public class MainScreenActivity extends AppCompatActivity {
                 LatLng NELatlng = new LatLng(NELat, NELong);
                 LatLng SWLatlng = new LatLng(SWLat, SWLong);
                 LatLngBounds newbounds = new LatLngBounds(SWLatlng,NELatlng);
-
-                getPrediction(newbounds);
-
-
-//                try {
-//                    AutocompletePredictionBufferResponse autocompletePredictions = results.getResult();
-//
-//                    Log.d("wwe", "Query completed. Received " + autocompletePredictions.getCount()
-//                            + " predictions.");
-//
-//                } catch (RuntimeExecutionException e) {
-//                    // If the query did not complete successfully return null
-//                    Log.e("wwe", "Error getting autocomplete prediction API call", e);
-//
-//                }
+                Task<AutocompletePredictionBufferResponse> results =
+                        mGeoDataClient.getAutocompletePredictions("restaurants", newbounds,
+                                null);
+                results.addOnCompleteListener(new OnCompleteListener<AutocompletePredictionBufferResponse>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AutocompletePredictionBufferResponse> task) {
+                        Log.d("wwe", "Query completed. Received " + task.getResult().get(0).getFullText(null)+ " predictions.");
+                    }
+                });
 
                 Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
             }
@@ -145,28 +139,6 @@ public class MainScreenActivity extends AppCompatActivity {
             // other 'case' lines to check for other
             // permissions this app might request
         }
-    }
-    public void getPrediction(final LatLngBounds newbounds){
-        new AsyncTask<Void,Void,Task<AutocompletePredictionBufferResponse>>(){
-            @Override
-            protected Task<AutocompletePredictionBufferResponse> doInBackground(Void... voids) {
-                Task<AutocompletePredictionBufferResponse> results =
-                        mGeoDataClient.getAutocompletePredictions("restaurants", newbounds,
-                                null);
-                return results;
-            }
-
-            @Override
-            protected void onPostExecute(Task<AutocompletePredictionBufferResponse> s) {
-                super.onPostExecute(s);
-                try {
-                    Thread.sleep(800);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Log.d("wwe", "Query completed. Received " + s.getResult().get(0).getFullText(null)+ " predictions.");
-            }
-        }.execute();
     }
 
 }
