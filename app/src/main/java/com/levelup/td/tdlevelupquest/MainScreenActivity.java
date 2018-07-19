@@ -87,7 +87,7 @@ public class MainScreenActivity extends AppCompatActivity {
         // Construct a PlaceDetectionClient.
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
 
-        // TODO: Start using the Places API.
+        // TODO: Start using the Places API.z
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainScreenActivity.this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},

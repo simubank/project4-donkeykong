@@ -89,7 +89,7 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                 .withActionBarDrawerToggle(false)
                 .withTranslucentStatusBar(false)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withIdentifier(1).withName("              Galen's Account").withSelectable(false),
+                        new PrimaryDrawerItem().withIdentifier(1).withName("      Galen's Account").withSelectable(false),
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withIdentifier(2).withName("Create Goals").withIcon(GoogleMaterial.Icon.gmd_folder_open),
                         new SecondaryDrawerItem().withName("Analyze Spending").withIcon(GoogleMaterial.Icon.gmd_multiline_chart),
