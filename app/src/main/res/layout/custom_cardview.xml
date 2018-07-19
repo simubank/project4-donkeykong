@@ -3,9 +3,9 @@
 
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="280dp"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    cardView:cardBackgroundColor="#80000">
+    cardView:cardBackgroundColor="#ffffff">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,12 +13,12 @@
 
         <ImageView
             android:id="@+id/thumbnail"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:foregroundGravity="center"
             android:layout_centerHorizontal="true"
             android:scaleType="centerCrop"
-            android:src="@mipmap/icon" />
+            android:src="@mipmap/apple_lineup" />
 
         <TextView
             android:id="@+id/title"
