@@ -107,15 +107,21 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                                 activity.finish();
                                 break;
                             case(3):
-                                Intent intent2 = new Intent(view.getContext(), InvestActivity.class);
+                                Intent intent2 = new Intent(view.getContext(), AnalyzeSpendingActivity.class);
                                 view.getContext().startActivity(intent2);
                                 activity.finish();
                                 break;
                             case(4):
-                                Intent intent3 = new Intent(view.getContext(), SettingsActivity.class);
+                                Intent intent3 = new Intent(view.getContext(), InvestActivity.class);
                                 view.getContext().startActivity(intent3);
                                 activity.finish();
                                 break;
+                            case(5):
+                                Intent intent4 = new Intent(view.getContext(), SettingsActivity.class);
+                                view.getContext().startActivity(intent4);
+                                activity.finish();
+                                break;
+
 
                         }
 
