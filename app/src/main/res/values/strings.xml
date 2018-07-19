@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TD MySave</string>
+    <string name="title_activity_card_display">card_display</string>
 </resources>

@@ -93,6 +93,7 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withIdentifier(2).withName("Create Goals").withIcon(GoogleMaterial.Icon.gmd_folder_open),
                         new SecondaryDrawerItem().withName("Analyze Spending").withIcon(GoogleMaterial.Icon.gmd_multiline_chart),
+                        new SecondaryDrawerItem().withName("Recommendations").withIcon(GoogleMaterial.Icon.gmd_beenhere),
                         new SecondaryDrawerItem().withName("Invest").withIcon(GoogleMaterial.Icon.gmd_attach_money),
                         new SecondaryDrawerItem().withName("Settings").withIcon(GoogleMaterial.Icon.gmd_settings)
                 )

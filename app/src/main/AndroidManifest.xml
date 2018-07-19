@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA_PIYCgm_IoMFUBxnK0U2zrJMwybbfcFU"/>
+            android:value="AIzaSyA_PIYCgm_IoMFUBxnK0U2zrJMwybbfcFU" />
+
         <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,12 +23,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainScreenActivity"/>
-        <activity android:name=".AnalyzeSpendingActivity"/>
-        <activity android:name=".LoadingActivity"/>
-        <activity android:name=".InvestActivity"/>
-        <activity android:name=".CreateGoalsActivity"/>
-        <activity android:name=".SettingsActivity"/>
-
+        <activity android:name=".MainScreenActivity" />
+        <activity android:name=".AnalyzeSpendingActivity" />
+        <activity android:name=".LoadingActivity" />
+        <activity android:name=".InvestActivity" />
+        <activity android:name=".CreateGoalsActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity
+            android:name=".card_display"
+            android:label="@string/title_activity_card_display"></activity>
     </application>
+
 </manifest>
