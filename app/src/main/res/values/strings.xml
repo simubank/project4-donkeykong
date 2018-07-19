@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TD MySave</string>
     <string name="title_activity_card_display">card_display</string>
+    <string name="title_activity_recommendation">Recommendation</string>
 </resources>

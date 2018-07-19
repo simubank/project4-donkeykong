@@ -38,11 +38,12 @@ public class NetworkHelper {
 
             @Override
             public void onResponse(JSONObject response) {
-                callback.onResponse(false,response);
+                callback.onResponse(true,response);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                callback.onResponse(false,null);
             }
         }) {
             @Override

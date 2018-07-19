@@ -7,5 +7,5 @@ import org.json.JSONObject;
  */
 
 public interface APICallback {
-    void onResponse(boolean success, JSONObject message); // Params are self-defined and added to suit your needs.
+    void onResponse(boolean success, JSONObject object); // Params are self-defined and added to suit your needs.
 }

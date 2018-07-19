@@ -2,6 +2,7 @@ package com.levelup.td.tdlevelupquest;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
@@ -44,6 +45,11 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -68,6 +74,14 @@ public class MainScreenActivity extends AppCompatActivity {
     private MapFragment mMap;
     private String apiResult;
     private GoogleApiClient mGoogleApiClient;
+
+    public class Pair {
+        private Integer integer;
+
+        private Place place;
+
+        //accessors
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +110,9 @@ public class MainScreenActivity extends AppCompatActivity {
         NetworkHelper.getInstance().botAPIGetRequest("https://dev.botsfinancial.com/api/accounts/873a24c9-1852-432a-8185-fb6e94d52ad1_b59fad0d-24ea-464c-a4cb-c2c1ee9702d9/transactions",
                 getApplicationContext(), new APICallback() {
                     @Override
-                    public void onResponse(boolean success, JSONObject message) {
-                        apiResult = message.toString();
-                        Log.d("wwe", apiResult);
+                    public void onResponse(boolean success, JSONObject object) {
+                        botAPIMostFrequent(object);
+                        Log.d("tsest","wewew");
                     }
                 });
         LaunchActivity.initDrawer(MainScreenActivity.this,this);
@@ -113,18 +127,31 @@ public class MainScreenActivity extends AppCompatActivity {
             Log.d("error", e.getMessage());
         }
     }
-
+    private void botAPIMostFrequent(JSONObject account){
+//        if(account != null){
+//            Log.d("json",account.toString());
+//        }
+    }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         BufferedReader reader;
         HashMap<Integer,String> placeTypeMap = new HashMap<>();
 
-//        try{
-//            reader = newBufferedReader(new FileReader("/keyValueForGooglePlaces.txt"));
-//            String line = reader.readLine();
-//            while(line != null){
-//                placeTypeMap.put()
-//            }
-//        }
+        try{
+            Context context = getApplicationContext();
+            reader = new BufferedReader(new InputStreamReader(context.getAssets().open("keyValueForGooglePlaces.txt")));
+
+            String line;
+
+            while((line = reader.readLine()) != null){
+                String value = line;
+                Integer key = Integer.parseInt(reader.readLine());
+
+//                Log.d("AAAAA ", "value  " + value + " key " + key);
+                placeTypeMap.put(key,value);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
@@ -139,26 +166,39 @@ public class MainScreenActivity extends AppCompatActivity {
                 Log.d("wwe", "Place Rating:"+place.getRating());
 
 
-                Double NELat = place.getLatLng().latitude + 1;
-                Double NELong = place.getLatLng().longitude + 1;
-                Double SWLat = place.getLatLng().latitude - 1;
-                Double SWLong = place.getLatLng().longitude - 1;
+                Double NELat = place.getLatLng().latitude + 0.5;
+                Double NELong = place.getLatLng().longitude + 0.5;
+                Double SWLat = place.getLatLng().latitude - 0.5;
+                Double SWLong = place.getLatLng().longitude - 0.5;
                 LatLng NELatlng = new LatLng(NELat, NELong);
                 LatLng SWLatlng = new LatLng(SWLat, SWLong);
                 LatLngBounds newbounds = new LatLngBounds(SWLatlng,NELatlng);
+                Integer placeMainType = place.getPlaceTypes().get(0);
+
                 Task<AutocompletePredictionBufferResponse> results =
-                        mGeoDataClient.getAutocompletePredictions("restaurants", newbounds,
+                        mGeoDataClient.getAutocompletePredictions(placeTypeMap.get(placeMainType), newbounds,
                                 null);
                 results.addOnCompleteListener(new OnCompleteListener<AutocompletePredictionBufferResponse>() {
                     @Override
                     public void onComplete(@NonNull Task<AutocompletePredictionBufferResponse> task) {
                         AutocompletePredictionBufferResponse autocompletePredictions = task.getResult();
                         Iterator<AutocompletePrediction> iterator = autocompletePredictions.iterator();
+                        List<Pair> displayedPlaces = new ArrayList<Pair>();
+
                         while(iterator.hasNext()){
                             AutocompletePrediction prediction = iterator.next();
                             Log.d("wwe", "Query completed. Received " + prediction.getFullText(null)+ " predictions.");
                             String placeID = prediction.getPlaceId();
-                            placeIDCreate(placeID);
+                            placeIDCreate(placeID,displayedPlaces);
+                        }
+                        int count = 0;
+                        List<Place> finalPlaces= new ArrayList<Place>();
+
+                        for(int i = 0; i < displayedPlaces.size(); ++i){
+                            if((displayedPlaces.get(i).integer <= 1)&&(count <= 3)){
+                                finalPlaces.add(displayedPlaces.get(i).place);
+                                ++count;
+                            }
                         }
                         autocompletePredictions.release();
                     }
@@ -169,13 +209,18 @@ public class MainScreenActivity extends AppCompatActivity {
         }
     }
 
-    public void placeIDCreate(String placeID){
+    public void placeIDCreate(String placeID, final List<Pair> topPlaces){
         Task<PlaceBufferResponse> placeResult = mGeoDataClient.getPlaceById(placeID);
         placeResult.addOnCompleteListener(new OnCompleteListener<PlaceBufferResponse>() {
             @Override
             public void onComplete(@NonNull Task<PlaceBufferResponse> task) {
                 PlaceBufferResponse places = task.getResult();
                 final Place place = places.get(0);
+                int priceLevel = place.getPriceLevel();
+                Pair newPair = new Pair();
+                newPair.integer = priceLevel;
+                newPair.place = place;
+                topPlaces.add(newPair);
                 Log.d("wwe", "Place Category Index:"+place.getPlaceTypes());
                 Log.d("wwe", "Place ID:"+place.getId());
                 Log.d("wwe", "Place Price Level:"+place.getPriceLevel());
