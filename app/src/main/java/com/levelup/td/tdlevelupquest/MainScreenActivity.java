@@ -14,10 +14,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.AutocompletePrediction;
+import com.google.android.gms.location.places.AutocompletePredictionBuffer;
 import com.google.android.gms.location.places.AutocompletePredictionBufferResponse;
 import com.google.android.gms.location.places.GeoDataClient;
 import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.PlaceBufferResponse;
 import com.google.android.gms.location.places.PlaceLikelihood;
 import com.google.android.gms.location.places.PlaceLikelihoodBufferResponse;
 import com.google.android.gms.location.places.Places;
@@ -36,10 +41,18 @@ import com.levelup.td.tdlevelupquest.Utils.NetworkHelper;
 
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Timer;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+
+import static java.nio.file.Files.newBufferedReader;
 
 /**
  * Created by Mikeb on 7/10/2018.
@@ -54,6 +67,7 @@ public class MainScreenActivity extends AppCompatActivity {
     private GoogleMap mgoogle;
     private MapFragment mMap;
     private String apiResult;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,15 +114,29 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        BufferedReader reader;
+        HashMap<Integer,String> placeTypeMap = new HashMap<>();
+
+//        try{
+//            reader = newBufferedReader(new FileReader("/keyValueForGooglePlaces.txt"));
+//            String line = reader.readLine();
+//            while(line != null){
+//                placeTypeMap.put()
+//            }
+//        }
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
-                String toastMsg = String.format("Place Name: %s", place.getName());
+
+                List<Integer> placeTypesList = place.getPlaceTypes();
+
+                String toastMsg = String.format("Place Name: %s", placeTypesList);
                 Log.d("wwe", "Place Category Index:"+place.getPlaceTypes());
                 Log.d("wwe", "Place ID:"+place.getId());
                 Log.d("wwe", "Place Price Level:"+place.getPriceLevel());
                 Log.d("wwe", "Place Location:"+place.getLatLng());
                 Log.d("wwe", "Place Rating:"+place.getRating());
+
 
                 Double NELat = place.getLatLng().latitude + 1;
                 Double NELong = place.getLatLng().longitude + 1;
@@ -123,7 +151,15 @@ public class MainScreenActivity extends AppCompatActivity {
                 results.addOnCompleteListener(new OnCompleteListener<AutocompletePredictionBufferResponse>() {
                     @Override
                     public void onComplete(@NonNull Task<AutocompletePredictionBufferResponse> task) {
-                        Log.d("wwe", "Query completed. Received " + task.getResult().get(0).getFullText(null)+ " predictions.");
+                        AutocompletePredictionBufferResponse autocompletePredictions = task.getResult();
+                        Iterator<AutocompletePrediction> iterator = autocompletePredictions.iterator();
+                        while(iterator.hasNext()){
+                            AutocompletePrediction prediction = iterator.next();
+                            Log.d("wwe", "Query completed. Received " + prediction.getFullText(null)+ " predictions.");
+                            String placeID = prediction.getPlaceId();
+                            placeIDCreate(placeID);
+                        }
+                        autocompletePredictions.release();
                     }
                 });
 
@@ -132,6 +168,21 @@ public class MainScreenActivity extends AppCompatActivity {
         }
     }
 
+    public void placeIDCreate(String placeID){
+        Task<PlaceBufferResponse> placeResult = mGeoDataClient.getPlaceById(placeID);
+        placeResult.addOnCompleteListener(new OnCompleteListener<PlaceBufferResponse>() {
+            @Override
+            public void onComplete(@NonNull Task<PlaceBufferResponse> task) {
+                PlaceBufferResponse places = task.getResult();
+                final Place place = places.get(0);
+                Log.d("wwe", "Place Category Index:"+place.getPlaceTypes());
+                Log.d("wwe", "Place ID:"+place.getId());
+                Log.d("wwe", "Place Price Level:"+place.getPriceLevel());
+                Log.d("wwe", "Place Location:"+place.getLatLng());
+                Log.d("wwe", "Place Rating:"+place.getRating());
+            }
+        });
+    }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
