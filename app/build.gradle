@@ -35,6 +35,7 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:26.1.1"
     implementation "com.android.support:design:26.1.1"
     implementation 'com.mikepenz:google-material-typeface:3.0.1.2.original@aar'
+
 }
 
 

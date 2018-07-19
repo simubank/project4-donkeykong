@@ -2,12 +2,9 @@ package com.levelup.td.tdlevelupquest;
 
 import android.app.Activity;
 import android.content.Context;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.net.Uri;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -54,12 +51,10 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
 
         View someView = findViewById(R.id.textView);
         View root = someView.getRootView();
-        root.getBackground().setColorFilter(Color.parseColor("#35B234"), PorterDuff.Mode.DARKEN);
-
+        root.getBackground().setColorFilter(Color.parseColor("#006400"), PorterDuff.Mode.DARKEN);
 
         //String url = "https://api.uclassify.com/v1/uClassify/Topics/classify/?readKey=sXvXN9MJP0DE&text=macbook";
         //JsonCall(url);
-        initDrawer();
 
         b1 = findViewById(R.id.firstbutton);
         b1.setOnClickListener(this);
@@ -84,29 +79,32 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
         requestQueue.add(jsonObjectRequest);
     }
 
-    public void initDrawer (){
+    public static void initDrawer (Activity activity, Context context){
 
         Drawer result = new DrawerBuilder()
-                .withActivity(this)
-                .withToolbar(new Toolbar(LaunchActivity.this))
+                .withActivity(activity)
+                .withToolbar(new Toolbar(context))
                 .withActionBarDrawerToggle(false)
                 .withTranslucentStatusBar(false)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withIdentifier(1).withName("number 1"),
+                        new PrimaryDrawerItem().withIdentifier(1).withName("              Galen's Account"),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withIdentifier(2).withName("number 2").withIcon(GoogleMaterial.Icon.gmd_cake),
-                        new SecondaryDrawerItem().withName("number 3").withIcon(GoogleMaterial.Icon.gmd_games)
+                        new SecondaryDrawerItem().withIdentifier(2).withName("Create Goals").withIcon(GoogleMaterial.Icon.gmd_folder_open),
+                        new SecondaryDrawerItem().withName("Analyze Spending").withIcon(GoogleMaterial.Icon.gmd_multiline_chart),
+                        new SecondaryDrawerItem().withName("Invest").withIcon(GoogleMaterial.Icon.gmd_attach_money),
+                        new SecondaryDrawerItem().withName("Settings").withIcon(GoogleMaterial.Icon.gmd_settings)
                 )
+                .withDrawerWidthPx(850)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+
+
                         return true;
                     }
                 })
                 .build();
-    }
-
-
+        }
 
 }
 

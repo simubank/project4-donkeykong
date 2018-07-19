@@ -101,6 +101,7 @@ public class MainScreenActivity extends AppCompatActivity {
                         Log.d("wwe", apiResult);
                     }
                 });
+        LaunchActivity.initDrawer(MainScreenActivity.this,this);
     }
 
     private void checkThisOut(){
@@ -192,12 +193,12 @@ public class MainScreenActivity extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 } else {
-
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                     Toast.makeText(MainScreenActivity.this, "Permission denied to read your Fine location", Toast.LENGTH_SHORT).show();
                 }
                 return;
+
             }
 
             // other 'case' lines to check for other
