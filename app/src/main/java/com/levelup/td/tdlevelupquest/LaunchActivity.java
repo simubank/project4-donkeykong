@@ -95,7 +95,8 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                         new SecondaryDrawerItem().withName("Analyze Spending").withIcon(GoogleMaterial.Icon.gmd_multiline_chart),
                         new SecondaryDrawerItem().withName("Recommendations").withIcon(GoogleMaterial.Icon.gmd_beenhere),
                         new SecondaryDrawerItem().withName("Invest").withIcon(GoogleMaterial.Icon.gmd_attach_money),
-                        new SecondaryDrawerItem().withName("Settings").withIcon(GoogleMaterial.Icon.gmd_settings)
+                        new SecondaryDrawerItem().withName("Settings").withIcon(GoogleMaterial.Icon.gmd_settings),
+                        new SecondaryDrawerItem().withName("Test Button | Card View").withIcon(GoogleMaterial.Icon.gmd_home)
                 )
                 .withDrawerWidthPx(850)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -122,7 +123,11 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                                 view.getContext().startActivity(intent4);
                                 activity.finish();
                                 break;
-
+                            case(7):
+                                Intent intent6 = new Intent(view.getContext(), card_display.class);
+                                view.getContext().startActivity(intent6);
+                                activity.finish();
+                                break;
 
                         }
 
