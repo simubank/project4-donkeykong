@@ -18,12 +18,6 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analyze_spending);
 
-
-
-
-
-
-
         LaunchActivity.initDrawer(AnalyzeSpendingActivity.this,this);
     }
 }

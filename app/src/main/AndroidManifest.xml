@@ -25,5 +25,9 @@
         <activity android:name=".MainScreenActivity"/>
         <activity android:name=".AnalyzeSpendingActivity"/>
         <activity android:name=".LoadingActivity"/>
+        <activity android:name=".InvestActivity"/>
+        <activity android:name=".CreateGoalsActivity"/>
+        <activity android:name=".SettingsActivity"/>
+
     </application>
 </manifest>

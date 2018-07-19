@@ -49,6 +49,8 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
 
+        final Activity activity = this;
+
         View someView = findViewById(R.id.textView);
         View root = someView.getRootView();
         root.getBackground().setColorFilter(Color.parseColor("#006400"), PorterDuff.Mode.DARKEN);
@@ -79,7 +81,7 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
         requestQueue.add(jsonObjectRequest);
     }
 
-    public static void initDrawer (Activity activity, Context context){
+    public static void initDrawer (final Activity activity, Context context){
 
         Drawer result = new DrawerBuilder()
                 .withActivity(activity)
@@ -87,7 +89,7 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                 .withActionBarDrawerToggle(false)
                 .withTranslucentStatusBar(false)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withIdentifier(1).withName("              Galen's Account"),
+                        new PrimaryDrawerItem().withIdentifier(1).withName("              Galen's Account").withSelectable(false),
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withIdentifier(2).withName("Create Goals").withIcon(GoogleMaterial.Icon.gmd_folder_open),
                         new SecondaryDrawerItem().withName("Analyze Spending").withIcon(GoogleMaterial.Icon.gmd_multiline_chart),
@@ -98,6 +100,24 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        switch(position){
+                            case(2):
+                                Intent intent = new Intent(view.getContext(), CreateGoalsActivity.class);
+                                view.getContext().startActivity(intent);
+                                activity.finish();
+                                break;
+                            case(3):
+                                Intent intent2 = new Intent(view.getContext(), InvestActivity.class);
+                                view.getContext().startActivity(intent2);
+                                activity.finish();
+                                break;
+                            case(4):
+                                Intent intent3 = new Intent(view.getContext(), SettingsActivity.class);
+                                view.getContext().startActivity(intent3);
+                                activity.finish();
+                                break;
+
+                        }
 
 
                         return true;
