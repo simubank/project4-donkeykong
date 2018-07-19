@@ -16,7 +16,9 @@
         android:layout_marginBottom="80dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:textSize="15dp"
+        android:textSize="4dp"
+        android:textColor="#ffffff"
+        android:text="Antao Production | Design."
         android:gravity="center" />
 
     <ImageView
@@ -27,7 +29,14 @@
         android:layout_gravity="center"
         android:src="@mipmap/tdapplogo"
         />
-
+    <ImageView
+        android:id="@+id/read_commitment"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="left"
+        android:src="@mipmap/ready_commitment"
+        />
     <Button
         android:id="@+id/firstbutton"
         android:text="Continue"
