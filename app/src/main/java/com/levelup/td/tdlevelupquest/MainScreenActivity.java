@@ -31,6 +31,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.RuntimeExecutionException;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
+import com.levelup.td.tdlevelupquest.Utils.APICallback;
+import com.levelup.td.tdlevelupquest.Utils.NetworkHelper;
+
+import org.json.JSONObject;
 
 import java.util.Timer;
 import java.util.concurrent.ExecutionException;
@@ -49,6 +53,7 @@ public class MainScreenActivity extends AppCompatActivity {
     private AutocompleteFilter mPlaceFilter;
     private GoogleMap mgoogle;
     private MapFragment mMap;
+    private String apiResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +79,14 @@ public class MainScreenActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     1);
         }
+        NetworkHelper.getInstance().botAPIGetRequest("https://dev.botsfinancial.com/api/accounts/873a24c9-1852-432a-8185-fb6e94d52ad1_b59fad0d-24ea-464c-a4cb-c2c1ee9702d9/transactions",
+                getApplicationContext(), new APICallback() {
+                    @Override
+                    public void onResponse(boolean success, JSONObject message) {
+                        apiResult = message.toString();
+                        Log.d("wwe", apiResult);
+                    }
+                });
     }
 
     private void checkThisOut(){
