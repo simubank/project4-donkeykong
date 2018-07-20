@@ -93,9 +93,9 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withIdentifier(2).withName("Create Goals").withIcon(GoogleMaterial.Icon.gmd_folder_open),
                         new SecondaryDrawerItem().withName("Analyze Spending").withIcon(GoogleMaterial.Icon.gmd_multiline_chart),
-                        new SecondaryDrawerItem().withName("Recommendations").withIcon(GoogleMaterial.Icon.gmd_beenhere),
                         new SecondaryDrawerItem().withName("Invest").withIcon(GoogleMaterial.Icon.gmd_attach_money),
                         new SecondaryDrawerItem().withName("Settings").withIcon(GoogleMaterial.Icon.gmd_settings),
+                        new SecondaryDrawerItem().withName("Recommendation").withIcon(GoogleMaterial.Icon.gmd_beenhere),
                         new SecondaryDrawerItem().withName("Test Button | Card View").withIcon(GoogleMaterial.Icon.gmd_home)
                 )
                 .withDrawerWidthPx(850)
@@ -121,6 +121,11 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                             case(5):
                                 Intent intent4 = new Intent(view.getContext(), SettingsActivity.class);
                                 view.getContext().startActivity(intent4);
+                                activity.finish();
+                                break;
+                            case(6):
+                                Intent intent5 = new Intent(view.getContext(), Recommendation.class);
+                                view.getContext().startActivity(intent5);
                                 activity.finish();
                                 break;
                             case(7):

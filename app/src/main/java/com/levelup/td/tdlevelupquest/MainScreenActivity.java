@@ -77,10 +77,7 @@ public class MainScreenActivity extends AppCompatActivity {
 
     public class Pair {
         private Integer integer;
-
         private Place place;
-
-        //accessors
     }
 
     @Override
@@ -154,10 +151,11 @@ public class MainScreenActivity extends AppCompatActivity {
         }
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                Place place = PlacePicker.getPlace(data, this);
+                final Place place = PlacePicker.getPlace(data, this);
 
                 List<Integer> placeTypesList = place.getPlaceTypes();
 
+                final Integer pickedPlacePriceLevel = place.getPriceLevel();
                 String toastMsg = String.format("Place Name: %s", placeTypesList);
                 Log.d("wwe", "Place Category Index:"+place.getPlaceTypes());
                 Log.d("wwe", "Place ID:"+place.getId());
@@ -195,7 +193,7 @@ public class MainScreenActivity extends AppCompatActivity {
                         List<Place> finalPlaces= new ArrayList<Place>();
 
                         for(int i = 0; i < displayedPlaces.size(); ++i){
-                            if((displayedPlaces.get(i).integer <= 1)&&(count <= 3)){
+                            if((displayedPlaces.get(i).integer <= pickedPlacePriceLevel)&&(count <= 3)){
                                 finalPlaces.add(displayedPlaces.get(i).place);
                                 ++count;
                             }
