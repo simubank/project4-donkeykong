@@ -1,0 +1,67 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:cardView="http://schemas.android.com/apk/res-auto"
+
+android:id="@+id/card_view"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="8dp"
+cardView:cardBackgroundColor="#fffcfc">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:foregroundGravity="center"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/coffee" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/thumbnail"
+        android:maxLines="3"
+        android:padding="8dp"
+        android:text="Your Coffee Savings Plan"
+        android:textColor="#163D22"
+        android:textStyle="bold"
+        android:textSize="22dp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:maxLines="3"
+        android:padding="2dp"
+        android:text="Save over $70 over 1 month by getting your coffee elsewhere. We know you love your coffee, so why not make it easier to enjoy that Java?"
+        android:textColor="#666"
+        android:textSize="14dp" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description"
+        android:textSize="4dp"
+        android:textColor="#000000"
+        android:text="Antao Production | Design."
+        android:gravity="center" />
+    <ImageView
+        android:id="@+id/greenbotdraw"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@id/textView"
+        android:background="#604c4c"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@id/greenbotdraw"
+        android:background="#362415"/>
+
+</RelativeLayout>
+</android.support.v7.widget.CardView>
