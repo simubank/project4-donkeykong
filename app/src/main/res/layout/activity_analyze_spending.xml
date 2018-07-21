@@ -16,15 +16,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+    <com.github.mikephil.charting.charts.PieChart
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:id="@+id/analzyePieChart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </com.github.mikephil.charting.charts.BarChart>
+    </com.github.mikephil.charting.charts.PieChart>
 
     <TextView
         android:id="@+id/savingAmountTextView"

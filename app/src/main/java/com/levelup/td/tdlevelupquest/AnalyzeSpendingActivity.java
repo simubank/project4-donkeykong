@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -17,9 +18,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.gms.location.places.Places;
 import com.levelup.td.tdlevelupquest.Utils.APICallback;
 import com.levelup.td.tdlevelupquest.Utils.NetworkHelper;
@@ -48,6 +56,7 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
                     public void onResponse(boolean success, JSONObject object) {
                         Log.d("tsest",""+success);
                         setupListView(object);
+                        setPieGraph();
                     }
                 });
     }
@@ -61,6 +70,7 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
                 Double amount = -1*transactions.getJSONObject(x).getDouble("currencyAmount");
                 String category = transactions.getJSONObject(x).getJSONArray("categoryTags").get(0).toString();
                 Log.d("printing",merchantName+" "+amount+" "+category);
+                if(merchantName.equals("Star Bucks")) continue;
                 if(transactionsMap.containsKey(merchantName)){
                     TransactionObject object = transactionsMap.get(merchantName);
                     object.totalAmount += amount;
@@ -69,7 +79,12 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
                     transactionsMap.put(merchantName,new TransactionObject(amount,category));
                 }
             }
-            TransactionMapAdapter adapter = new TransactionMapAdapter(transactionsMap);
+            TransactionMapAdapter adapter = new TransactionMapAdapter(transactionsMap, new ListViewCallback() {
+                @Override
+                public void onButtonClicked() {
+                    setPieGraph();
+                }
+            });
             transactionListView.setAdapter(adapter);
         }catch (Exception e){
             e.printStackTrace();
@@ -77,7 +92,59 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
     }
 
     private void setPieGraph(){
-       //to do
+        PieChart mChart =  findViewById(R.id.analzyePieChart);
+
+        //setup chart image
+        mChart.setDrawHoleEnabled(true);
+        mChart.setTransparentCircleAlpha(0);
+        mChart.setHoleRadius(7);
+        mChart.setTransparentCircleRadius(10);
+        mChart.setUsePercentValues(true);
+        Description d = new Description();
+        d.setText("");
+        mChart.setDescription(d);
+
+        mChart.setRotationAngle(0);
+        mChart.setRotationEnabled(true);
+        mChart.setEntryLabelColor(Color.GRAY);
+        mChart.getLegend().setEnabled(false);
+
+        List<PieEntry> pieChartEntries = new ArrayList<>();
+        for(Map.Entry<String, TransactionObject> obj : transactionsMap.entrySet()){
+            pieChartEntries.add(new PieEntry(obj.getValue().totalAmount.floatValue(), obj.getKey()));
+        }
+
+        PieDataSet set = new PieDataSet(pieChartEntries, "Transaction Details");
+        PieData data = new PieData(set);
+        mChart.setData(data);
+        set.setSliceSpace(3);
+        set.setSelectionShift(2);
+
+        //set colors
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+
+        for (int c : ColorTemplate.VORDIPLOM_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.JOYFUL_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.COLORFUL_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.LIBERTY_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.PASTEL_COLORS)
+            colors.add(c);
+
+        colors.add(ColorTemplate.getHoloBlue());
+        set.setColors(colors);
+
+        data.setValueFormatter(new PercentFormatter());
+        data.setValueTextSize(11f);
+        data.setValueTextColor(Color.GRAY);
+        mChart.invalidate();
     }
 
     private class TransactionObject{
@@ -91,11 +158,16 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
         }
     }
 
+    private interface ListViewCallback {
+        void onButtonClicked();
+    }
+
     private class TransactionMapAdapter extends BaseAdapter{
         private ArrayList arrayData;
         private Map<String,TransactionObject> map;
-        public TransactionMapAdapter(Map<String,TransactionObject> newMap){
-
+        private ListViewCallback callback;
+        public TransactionMapAdapter(Map<String,TransactionObject> newMap, ListViewCallback newCallback){
+            callback = newCallback;
             arrayData = new ArrayList();
             map = newMap;
             arrayData.addAll(newMap.entrySet());
@@ -123,10 +195,11 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
             TransactionObject obj =map.get(item.getKey());
             Double amount = obj.totalAmount/obj.numberOfTimes;
             obj.numberOfTimes += delta;
-            obj.totalAmount += (delta* amount);
+            obj.totalAmount += (int)(delta* amount);
 
             numberOfTimesTextView.setText("#"+item.getValue().numberOfTimes);
             amountTextView.setText("$"+item.getValue().totalAmount);
+            callback.onButtonClicked();
         }
 
         @Override
