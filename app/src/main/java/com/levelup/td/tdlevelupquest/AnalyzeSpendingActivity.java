@@ -2,6 +2,7 @@ package com.levelup.td.tdlevelupquest;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.google.android.gms.location.places.Places;
 import com.levelup.td.tdlevelupquest.Utils.APICallback;
 import com.levelup.td.tdlevelupquest.Utils.NetworkHelper;
@@ -23,6 +28,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AnalyzeSpendingActivity extends AppCompatActivity {
@@ -67,6 +73,10 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void setPieGraph(){
+       //to do
     }
 
     private class TransactionObject{
