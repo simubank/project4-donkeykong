@@ -42,6 +42,7 @@ import java.util.Map;
 
 public class AnalyzeSpendingActivity extends AppCompatActivity {
     private HashMap<String,TransactionObject> transactionsMap = new HashMap<String,TransactionObject>();
+    private Double ogAmount =0.0;
     private ListView transactionListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,11 +72,14 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
                 String category = transactions.getJSONObject(x).getJSONArray("categoryTags").get(0).toString();
                 Log.d("printing",merchantName+" "+amount+" "+category);
                 if(merchantName.equals("Star Bucks")) continue;
+                if(merchantName.equals("Apple")) continue;
                 if(transactionsMap.containsKey(merchantName)){
                     TransactionObject object = transactionsMap.get(merchantName);
                     object.totalAmount += amount;
+                    ogAmount += amount;
                     object.numberOfTimes ++;
                 }else{
+                    ogAmount += amount;
                     transactionsMap.put(merchantName,new TransactionObject(amount,category));
                 }
             }
@@ -83,12 +87,27 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
                 @Override
                 public void onButtonClicked() {
                     setPieGraph();
+                    percentChange();
                 }
             });
             transactionListView.setAdapter(adapter);
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void percentChange(){
+        Double newTotal = 0.0;
+        for(Map.Entry<String, TransactionObject> obj : transactionsMap.entrySet()){
+            newTotal += obj.getValue().totalAmount;
+            Log.d("amount:","merchant: "+obj.getKey()+ " v: "+obj.getValue().totalAmount);
+        }
+        Log.d("og amount:",ogAmount+"");
+        Log.d("amount:",""+newTotal);
+        TextView savingAmountTextView = findViewById(R.id.savingAmountTextView);
+        TextView savingPercentTextView = findViewById(R.id.savingPercentTextView);
+        savingAmountTextView.setText("Amount saved: "+(ogAmount-newTotal));
+        savingPercentTextView.setText("Percentage Cut: "+Math.round((1-(newTotal/ogAmount)) *100)+"%");
     }
 
     private void setPieGraph(){
