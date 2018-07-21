@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -92,9 +93,12 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
 
     private class TransactionMapAdapter extends BaseAdapter{
         private ArrayList arrayData;
-        public TransactionMapAdapter(Map<String,TransactionObject> map){
+        private Map<String,TransactionObject> map;
+        public TransactionMapAdapter(Map<String,TransactionObject> newMap){
+
             arrayData = new ArrayList();
-            arrayData.addAll(map.entrySet());
+            map = newMap;
+            arrayData.addAll(newMap.entrySet());
         }
 
         @Override
@@ -112,10 +116,22 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
             return (Map.Entry) arrayData.get(position);
         }
 
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            final View result;
+        private void changeAmount(int position, int delta, View view){
+            TextView numberOfTimesTextView = view.findViewById(R.id.numberOfTimesTextView);
+            TextView amountTextView = view.findViewById(R.id.amountTextView);
+            Map.Entry<String, TransactionObject> item = getItem(position);
+            TransactionObject obj =map.get(item.getKey());
+            Double amount = obj.totalAmount/obj.numberOfTimes;
+            obj.numberOfTimes += delta;
+            obj.totalAmount += (delta* amount);
 
+            numberOfTimesTextView.setText("#"+item.getValue().numberOfTimes);
+            amountTextView.setText("$"+item.getValue().totalAmount);
+        }
+
+        @Override
+        public View getView(final int i, View view, ViewGroup viewGroup) {
+            final View result;
             if (view == null) {
                 result = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cell_analyze_spend, viewGroup, false);
             } else {
@@ -125,9 +141,24 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
             Map.Entry<String, TransactionObject> item = getItem(i);
 
             //set textvalue
+            TextView numberOfTimesTextView = result.findViewById(R.id.numberOfTimesTextView);
             ((TextView)result.findViewById(R.id.amountTextView)).setText("$"+item.getValue().totalAmount);
-            ((TextView)result.findViewById(R.id.numberOfTimesTextView)).setText("#"+item.getValue().numberOfTimes);
+            numberOfTimesTextView.setText("#"+item.getValue().numberOfTimes);
             ((TextView)result.findViewById(R.id.merchantTextView)).setText(item.getKey());
+            ImageButton addBtn = result.findViewById(R.id.plusButton);
+            ImageButton minusBtn =result.findViewById(R.id.minusButton);
+            addBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    changeAmount(i,1,result);
+                }
+            });
+            minusBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    changeAmount(i,-1,result);
+                }
+            });
             Log.d("Loading","here");
 
             return result;
