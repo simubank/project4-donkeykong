@@ -207,7 +207,7 @@ public class CurrentMonthAnalysisActivity extends AppCompatActivity{
 
             pieChart.setRotationAngle(0);
             pieChart.setRotationEnabled(true);
-            pieChart.setEntryLabelColor(Color.GRAY);
+            pieChart.setEntryLabelColor(Color.BLACK);
             pieChart.getLegend().setEnabled(false);
             pieChart.setExtraOffsets(10,0,10,0);
 
@@ -236,7 +236,7 @@ public class CurrentMonthAnalysisActivity extends AppCompatActivity{
 
             data.setValueFormatter(new PercentFormatter());
             data.setValueTextSize(10f);
-            data.setValueTextColor(Color.GRAY);
+            data.setValueTextColor(Color.BLACK);
             pieChart.invalidate();
         }
 
