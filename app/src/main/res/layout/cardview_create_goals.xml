@@ -16,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center_horizontal"
-
         >
 
         <TextView
@@ -74,7 +73,7 @@
                 android:layout_toRightOf="@+id/icon"
                 android:layout_alignParentTop="true"
                 android:textSize="20sp"
-android:hint="Hint Field 1"                />
+                android:hint="Item"                />
 
             <!-- The age, in the bottom -->
 
@@ -87,7 +86,7 @@ android:hint="Hint Field 1"                />
                 android:layout_toEndOf="@+id/icon"
                 android:layout_toRightOf="@+id/icon"
                 android:layout_below="@+id/hint_field_1"
-                android:hint="Hint Field 2"
+                android:hint="Price ($)"
                 />
 
 
@@ -133,7 +132,7 @@ android:visibility="gone"
                 android:layout_toRightOf="@+id/icon1"
                 android:layout_alignParentTop="true"
                 android:textSize="20sp"
-                android:hint="Hint Field 1"                />
+                android:hint="Item"                />
 
             <!-- The age, in the bottom -->
 
@@ -146,7 +145,7 @@ android:visibility="gone"
                 android:layout_toEndOf="@+id/icon1"
                 android:layout_toRightOf="@+id/icon1"
                 android:layout_below="@+id/hint_field_11"
-                android:hint="Hint Field 2"
+                android:hint="Price ($)"
                 />
 
 
@@ -193,7 +192,7 @@ android:visibility="gone"
                 android:layout_toRightOf="@+id/icon2"
                 android:layout_alignParentTop="true"
                 android:textSize="20sp"
-                android:hint="Hint Field 1"                />
+                android:hint="Item"                />
 
             <!-- The age, in the bottom -->
 
@@ -206,7 +205,7 @@ android:visibility="gone"
                 android:layout_toEndOf="@+id/icon2"
                 android:layout_toRightOf="@+id/icon2"
                 android:layout_below="@+id/hint_field_12"
-                android:hint="Hint Field 2"
+                android:hint="Price ($)"
                 />
 
 
@@ -251,7 +250,7 @@ android:visibility="gone"
             android:layout_toRightOf="@+id/icon3"
             android:layout_alignParentTop="true"
             android:textSize="20sp"
-            android:hint="Hint Field 1"                />
+            android:hint="Item"                />
 
         <!-- The age, in the bottom -->
 
@@ -264,12 +263,34 @@ android:visibility="gone"
             android:layout_toEndOf="@+id/icon3"
             android:layout_toRightOf="@+id/icon3"
             android:layout_below="@+id/hint_field_13"
-            android:hint="Hint Field 2"
+            android:hint="Price ($)"
             />
 
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+
+        <Button
+            android:id="@+id/doneButton"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="DONE"
+            android:background="#ffffff"
+            android:textColor="#163d22"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="20dp"
+
+            />
+
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -283,7 +304,7 @@ android:visibility="gone"
         android:layout_height="50dp"
         android:src="@drawable/circle"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="300dp"
+        android:layout_marginLeft="80dp"
         android:clickable="true"
         />
 
@@ -295,10 +316,14 @@ android:visibility="gone"
             android:textColor="#163D22"
             android:gravity="center"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="300dp"
+            android:layout_marginLeft="80dp"
             />
 
     </RelativeLayout>
+
+        </LinearLayout>
+
+
 
 
 </LinearLayout>
