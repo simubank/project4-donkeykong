@@ -1,0 +1,304 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ededed"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#163D22"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal"
+
+        >
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:id="@+id/switchToPieChartButton"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:textColor="#fff"
+            android:textSize="25dp"
+            android:text="CREATE GOALS"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RelativeLayout>
+
+    <!-- A CardView that contains a TextView -->
+    <android.support.v7.widget.CardView
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:elevation="15dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/card1"
+        >
+
+        <!-- Content inside the card. -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp" >
+
+            <!-- A photo on the left. We'll just use the launcher icon. -->
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@mipmap/ic_launcher"
+                />
+
+            <!-- The person name, on top -->
+            <EditText
+                android:id="@+id/hint_field_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/icon"
+                android:layout_toRightOf="@+id/icon"
+                android:layout_alignParentTop="true"
+                android:textSize="20sp"
+android:hint="Hint Field 1"                />
+
+            <!-- The age, in the bottom -->
+
+
+            <EditText
+                android:id="@+id/hint_field_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/icon"
+                android:layout_toRightOf="@+id/icon"
+                android:layout_below="@+id/hint_field_1"
+                android:hint="Hint Field 2"
+                />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:elevation="15dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/card2"
+android:visibility="gone"
+        >
+
+        <!-- Content inside the card. -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp" >
+
+            <!-- A photo on the left. We'll just use the launcher icon. -->
+            <ImageView
+                android:id="@+id/icon1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@mipmap/ic_launcher"
+                />
+
+            <!-- The person name, on top -->
+            <EditText
+                android:id="@+id/hint_field_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/icon1"
+                android:layout_toRightOf="@+id/icon1"
+                android:layout_alignParentTop="true"
+                android:textSize="20sp"
+                android:hint="Hint Field 1"                />
+
+            <!-- The age, in the bottom -->
+
+
+            <EditText
+                android:id="@+id/hint_field_21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/icon1"
+                android:layout_toRightOf="@+id/icon1"
+                android:layout_below="@+id/hint_field_11"
+                android:hint="Hint Field 2"
+                />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:elevation="15dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/card3"
+        android:visibility="gone"
+
+        >
+
+        <!-- Content inside the card. -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp" >
+
+            <!-- A photo on the left. We'll just use the launcher icon. -->
+            <ImageView
+                android:id="@+id/icon2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@mipmap/ic_launcher"
+                />
+
+            <!-- The person name, on top -->
+            <EditText
+                android:id="@+id/hint_field_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/icon2"
+                android:layout_toRightOf="@+id/icon2"
+                android:layout_alignParentTop="true"
+                android:textSize="20sp"
+                android:hint="Hint Field 1"                />
+
+            <!-- The age, in the bottom -->
+
+
+            <EditText
+                android:id="@+id/hint_field_22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/icon2"
+                android:layout_toRightOf="@+id/icon2"
+                android:layout_below="@+id/hint_field_12"
+                android:hint="Hint Field 2"
+                />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView><android.support.v7.widget.CardView
+    android:layout_width="375dp"
+    android:layout_height="wrap_content"
+    android:elevation="15dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginTop="10dp"
+    android:id="@+id/card4"
+    android:visibility="gone"
+
+    >
+
+    <!-- Content inside the card. -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp" >
+
+        <!-- A photo on the left. We'll just use the launcher icon. -->
+        <ImageView
+            android:id="@+id/icon3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/ic_launcher"
+            />
+
+        <!-- The person name, on top -->
+        <EditText
+            android:id="@+id/hint_field_13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/icon3"
+            android:layout_toRightOf="@+id/icon3"
+            android:layout_alignParentTop="true"
+            android:textSize="20sp"
+            android:hint="Hint Field 1"                />
+
+        <!-- The age, in the bottom -->
+
+
+        <EditText
+            android:id="@+id/hint_field_23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_toEndOf="@+id/icon3"
+            android:layout_toRightOf="@+id/icon3"
+            android:layout_below="@+id/hint_field_13"
+            android:hint="Hint Field 2"
+            />
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        >
+
+    <ImageView
+        android:id="@+id/addButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/circle"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="300dp"
+        android:clickable="true"
+        />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="+"
+            android:textSize="50dp"
+            android:textColor="#163D22"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="300dp"
+            />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

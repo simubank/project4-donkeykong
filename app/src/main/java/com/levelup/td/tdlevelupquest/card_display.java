@@ -9,6 +9,8 @@ public class card_display extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_display);
+
+        LaunchActivity.initDrawer(card_display.this, this );
     }
 
 }
