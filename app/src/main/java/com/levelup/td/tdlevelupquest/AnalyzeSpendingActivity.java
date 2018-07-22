@@ -1,6 +1,7 @@
 package com.levelup.td.tdlevelupquest;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -38,9 +39,14 @@ import com.levelup.td.tdlevelupquest.Utils.NetworkHelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class AnalyzeSpendingActivity extends AppCompatActivity {
@@ -84,6 +90,16 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
             }
         });
 
+        Button makeItAGoalBtn = findViewById(R.id.makeGoalButton);
+        makeItAGoalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(AnalyzeSpendingActivity.this, CurrentMonthAnalysisActivity.class);
+                myIntent.putExtra("map",transactionsMap);
+                AnalyzeSpendingActivity.this.startActivity(myIntent);
+            }
+        });
+
         LaunchActivity.initDrawer(AnalyzeSpendingActivity.this,this);
         NetworkHelper.getInstance().botAPIGetRequest("https://dev.botsfinancial.com/api/simulatedaccounts/873a24c9-1852-432a-8185-fb6e94d52ad1_b59fad0d-24ea-464c-a4cb-c2c1ee9702d9/simulatedtransactions",
                 getApplicationContext(), new APICallback() {
@@ -104,9 +120,17 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
                 String merchantName = transactions.getJSONObject(x).getString("merchantName");
                 Double amount = -1*transactions.getJSONObject(x).getDouble("currencyAmount");
                 String category = transactions.getJSONObject(x).getJSONArray("categoryTags").get(0).toString();
+
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                Date date = format.parse(transactions.getJSONObject(x).getString("postDate").substring(0,10));
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(date);
+                Log.d("month","Month"+calendar.get(Calendar.MONTH));
+                //postDate
                 Log.d("printing",merchantName+" "+amount+" "+category);
                 if(merchantName.equals("Star Bucks")) continue;
                 if(merchantName.equals("Apple")) continue;
+                if(calendar.get(Calendar.MONTH)==8)continue;
                 if(transactionsMap.containsKey(merchantName)){
                     TransactionObject object = transactionsMap.get(merchantName);
                     object.totalAmount += amount;
@@ -165,7 +189,10 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
             labels.add(obj.getKey());
         }
         barChart.getXAxis().setGranularityEnabled(true);
+        barChart.getXAxis().setDrawGridLines(false);
+        barChart.getAxisLeft().setDrawGridLines(false);
         barChart.getXAxis().setTextColor(Color.GRAY);
+        barChart.getAxisLeft().setTextColor(Color.GRAY);
         barChart.getXAxis().setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
@@ -255,17 +282,6 @@ public class AnalyzeSpendingActivity extends AppCompatActivity {
         data.setValueTextSize(11f);
         data.setValueTextColor(Color.GRAY);
         mChart.invalidate();
-    }
-
-    private class TransactionObject{
-        Double totalAmount;
-        int numberOfTimes;
-        String category;
-        public TransactionObject(Double newAmount, String newCategory){
-            this.totalAmount = newAmount;
-            this.category = newCategory;
-            numberOfTimes = 1;
-        }
     }
 
     private interface ListViewCallback {

@@ -37,6 +37,7 @@
         android:layout_marginStart="8dp"
         android:text="Percentage Cut: 0%"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.835"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/savingAmountTextView" />
 
@@ -94,9 +95,23 @@
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="304dp"
         android:text="Amount Saved: $0"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/makeGoalButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="103dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="307dp"
+        android:background="@drawable/buttonshape"
+        android:text="Make it a Goal"
+        android:textColor="#fff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

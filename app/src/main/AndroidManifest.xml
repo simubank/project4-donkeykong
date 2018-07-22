@@ -29,6 +29,7 @@
         <activity android:name=".InvestActivity" />
         <activity android:name=".CreateGoalsActivity" />
         <activity android:name=".SettingsActivity" />
+        <activity android:name=".CurrentMonthAnalysisActivity" />
         <activity
             android:name=".card_display"
             android:label="@string/title_activity_card_display" />
