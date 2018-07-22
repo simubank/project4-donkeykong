@@ -18,7 +18,7 @@
             android:foregroundGravity="center"
             android:layout_centerHorizontal="true"
             android:scaleType="centerCrop"
-            android:src="@mipmap/apple_lineup" />
+            android:src="@mipmap/fastfood" />
 
         <TextView
             android:id="@+id/title"
@@ -27,7 +27,7 @@
             android:layout_below="@+id/thumbnail"
             android:maxLines="3"
             android:padding="8dp"
-            android:text="Your Electronics Savings Plan"
+            android:text="Your Fast Food Savings Plan"
             android:textColor="#163D22"
             android:textStyle="bold"
             android:textSize="22dp" />
@@ -39,7 +39,7 @@
             android:layout_below="@+id/title"
             android:maxLines="3"
             android:padding="2dp"
-            android:text="Save over $230 over 4 months by cutting costs on your electronics purchases."
+            android:text="Save over $65 over 1 month by reducing your fast-food purchases."
             android:textColor="#666"
             android:textSize="14dp" />
         <TextView
@@ -51,6 +51,7 @@
             android:layout_below="@id/description"
             android:text="Antao Production | Design."
             android:gravity="center" />
+
         <ImageView
             android:id="@+id/greenbotdraw"
             android:layout_width="match_parent"

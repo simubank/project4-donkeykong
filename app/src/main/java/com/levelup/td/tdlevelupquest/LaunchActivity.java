@@ -124,7 +124,7 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                                 activity.finish();
                                 break;
                             case(6):
-                                Intent intent5 = new Intent(view.getContext(), Recommendation.class);
+                                Intent intent5 = new Intent(view.getContext(), AnalyzeSpendingActivity.class);
                                 view.getContext().startActivity(intent5);
                                 activity.finish();
                                 break;
