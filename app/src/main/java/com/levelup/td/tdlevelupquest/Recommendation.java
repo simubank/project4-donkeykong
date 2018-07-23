@@ -53,6 +53,7 @@ public class Recommendation extends Activity {
     private PlaceDetectionClient mPlaceDetectionClient;
     private ArrayList<Place> placeArrayList = new ArrayList();
     private HashMap<String,Integer> transactionsMap = new HashMap<String,Integer>();
+    private List<Place> myPlaceList = new ArrayList();
     public class Pair {
         private Integer integer;
         private Place place;
@@ -111,8 +112,8 @@ public class Recommendation extends Activity {
                 }
             }
             TextView merchant = findViewById(R.id.merchantTextView);
-            merchant.setText("You spend a whole lot from the merchant: "
-                    + maxMerchant + " Please select the " + maxMerchant + " location you visit the most.");
+            merchant.setText("Your most frequent purchase was from the merchant: "
+                    + maxMerchant + ". Please select the " + maxMerchant + " location you visit.");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -127,7 +128,7 @@ public class Recommendation extends Activity {
             Log.d("error", e.getMessage());
         }
     }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
         BufferedReader reader;
         HashMap<Integer,String> placeTypeMap = new HashMap<>();
 
@@ -170,42 +171,45 @@ public class Recommendation extends Activity {
                 Integer placeMainType = place.getPlaceTypes().get(0);
                 AutocompleteFilter placeFilter = new AutocompleteFilter.Builder().setTypeFilter(placeMainType).build();
                 Task<AutocompletePredictionBufferResponse> results =
-                        mGeoDataClient.getAutocompletePredictions("pizza", newbounds,null);
+                        mGeoDataClient.getAutocompletePredictions("coffee", newbounds,null);
                 results.addOnCompleteListener(new OnCompleteListener<AutocompletePredictionBufferResponse>() {
                     @Override
                     public void onComplete(@NonNull Task<AutocompletePredictionBufferResponse> task) {
                         AutocompletePredictionBufferResponse autocompletePredictions = task.getResult();
                         Log.d("wwf", "Count: " + autocompletePredictions.getCount());
                         Iterator<AutocompletePrediction> iterator = autocompletePredictions.iterator();
+                        int counter = 0;
                         while(iterator.hasNext()){
                             AutocompletePrediction prediction = iterator.next();
                             Log.d("wwe", "Query completed. Received " + prediction.getFullText(null)+ " predictions.");
                             String placeID = prediction.getPlaceId();
-                            placeIDCreate(placeID);
-                        }
-                        int count = 0;
-                        List<Place> finalPlaces= new ArrayList<Place>();
-                        Log.d("wwe","PRICE LEVEL" + pickedPlacePriceLevel);
-                        int finalPriceLevel = pickedPlacePriceLevel;
-                        if(pickedPlacePriceLevel == -1){
-                            finalPriceLevel = 5;
-                        }
-                        Log.d("wed","Display Size: " + displayedPlaces.size());
-                        for(int i = 0; i < displayedPlaces.size(); ++i){
-                            Log.d("wwd","dispalyedPlaces" + displayedPlaces.get(i).integer);
-                            if((displayedPlaces.get(i).integer <= finalPriceLevel)&&(count < 2)){
-                                finalPlaces.add(displayedPlaces.get(i).place);
-                                ++count;
-                            }
-                        }
+                            placeIDCreate(placeID,counter,pickedPlacePriceLevel);
+                            counter++;
 
-                        RecommendationAdapter adapter = new RecommendationAdapter(finalPlaces,transactionsMap);
-                        ListView listView = findViewById(R.id.recommendationList);
-                        listView.setAdapter(adapter);
-                        Log.d("look","loading list view "+finalPlaces.size());
-                        for(int i = 0; i < finalPlaces.size();++i){
-                            Log.d("wed","Final Results: " + finalPlaces.get(i).getName());
                         }
+//                        int count = 0;
+//                        List<Place> finalPlaces= new ArrayList<Place>();
+//                        Log.d("wwe","PRICE LEVEL" + pickedPlacePriceLevel);
+//                        int finalPriceLevel = pickedPlacePriceLevel;
+//                        if(pickedPlacePriceLevel == -1){
+//                            finalPriceLevel = 5;
+//                        }
+//                        Log.d("wed","Display Size: " + displayedPlaces.size());
+//                        for(int i = 0; i < displayedPlaces.size(); ++i){
+//                            Log.d("wwd","dispalyedPlaces" + displayedPlaces.get(i).integer);
+//                            if((displayedPlaces.get(i).integer <= finalPriceLevel)&&(count < 3)){
+//                                finalPlaces.add(displayedPlaces.get(i).place);
+//                                ++count;
+//                            }
+//                        }
+//
+//                        RecommendationAdapter adapter = new RecommendationAdapter(finalPlaces,transactionsMap);
+//                        ListView listView = findViewById(R.id.recommendationList);
+//                        listView.setAdapter(adapter);
+//                        Log.d("look","loading list view "+finalPlaces.size());
+//                        for(int i = 0; i < finalPlaces.size();++i){
+//                            Log.d("wed","Final Results: " + finalPlaces.get(i).getName());
+//                        }
                         autocompletePredictions.release();
                     }
                 });
@@ -215,7 +219,7 @@ public class Recommendation extends Activity {
         }
     }
 
-    public void placeIDCreate(final String placeID){
+    public void placeIDCreate(final String placeID,final int counter, final int pickedPlacePriceLevel){
         Task<PlaceBufferResponse> placeResult = mGeoDataClient.getPlaceById(placeID);
         placeResult.addOnCompleteListener(new OnCompleteListener<PlaceBufferResponse>() {
             @Override
@@ -233,6 +237,12 @@ public class Recommendation extends Activity {
                 Log.d("wwe", "Place Price Level:"+place.getPriceLevel());
                 Log.d("wwe", "Place Location:"+place.getLatLng());
                 Log.d("wwe", "Place Rating:"+place.getRating());
+                myPlaceList.add(newPair.place);
+                if(newPair.integer <= pickedPlacePriceLevel){
+                    RecommendationAdapter adapter = new RecommendationAdapter(myPlaceList,transactionsMap);
+                    ListView listView = findViewById(R.id.recommendationList);
+                    listView.setAdapter(adapter);
+                }
             }
         });
     }
@@ -273,7 +283,7 @@ public class Recommendation extends Activity {
             //set textvalue
             ((TextView)result.findViewById(R.id.recommendationPosition)).setText(i + 1 + ".");
             ((TextView)result.findViewById(R.id.recommendationName)).setText(myNewPlace.getName());
-            ((TextView)result.findViewById(R.id.recommendationRating)).setText("*" + myNewPlace.getRating());
+            ((TextView)result.findViewById(R.id.recommendationRating)).setText("" + ((myNewPlace.getRating() < 0) ? "N/A" : myNewPlace.getRating() ));
             Log.d("Loading","here");
             return result;
         }
