@@ -88,17 +88,26 @@ public class Recommendation extends Activity {
         try{
             Log.d("www",jsonObject.getJSONArray("result").toString());
             JSONArray transactions = jsonObject.getJSONArray("result");
+            int max = 0;
+            String maxMerchant = "hello";
             for(int x = 0 ;x <transactions.length();x++){
                 String merchantName = transactions.getJSONObject(x).getString("merchantName");
                 Log.d("printing","merchantName " + merchantName);
                 if(transactionsMap.containsKey(merchantName)){
-                    int MerchantCount = transactionsMap.get(merchantName);
-                    ++ MerchantCount;
-                    transactionsMap.put(merchantName,MerchantCount);
+                    int merchantCount = transactionsMap.get(merchantName);
+                    ++ merchantCount;
+                    maxMerchant = (max < merchantCount)? merchantName :maxMerchant;
+                    max = (max < merchantCount)? merchantCount :max;
+                    transactionsMap.put(merchantName,merchantCount);
                 }else{
+                    maxMerchant = (max == 0)? merchantName :maxMerchant;
+                    max = (max == 0)? 1 :max;
                     transactionsMap.put(merchantName,1);
                 }
             }
+            TextView merchant = findViewById(R.id.merchantTextView);
+            merchant.setText("You spend a whole lot from the merchant: "
+                    + maxMerchant + " Please select the " + maxMerchant + " location you visit the most.");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -226,16 +235,6 @@ public class Recommendation extends Activity {
         private List <Place>arrayData;
         public RecommendationAdapter(List<Place> myPlace, HashMap<String,Integer> transactionMap){
             arrayData = myPlace;
-            String mostFrequentMerchant = "N/A";
-            int max = 0;
-            for (Map.Entry<String, Integer> entry : transactionMap.entrySet()) {
-                if(entry.getValue() > max){
-                    mostFrequentMerchant = entry.getKey();
-                    max = entry.getValue();
-                }
-            }
-            TextView merchant = (TextView)findViewById(R.id.merchantTextView);
-            merchant.setText("You spend a whole lot from the merchant: " + mostFrequentMerchant + " Please select the " + mostFrequentMerchant + " location you visit the most.");
         }
 
         @Override
