@@ -32,6 +32,12 @@
         android:text="You have no current goals set."
         android:layout_gravity="center_horizontal" />
 
+    <ImageView android:src="@mipmap/ladyinchair"
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:layout_marginBottom="24dp"
+        android:layout_gravity="center_horizontal" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
