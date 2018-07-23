@@ -18,14 +18,14 @@
 
     <TextView
         android:id="@+id/recommendationName"
-        android:layout_width="169dp"
-        android:layout_height="23dp"
+        android:layout_width="114dp"
+        android:layout_height="19dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="40dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/recommendationRating"
-        app:layout_constraintHorizontal_bias="0.608"
+        app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toEndOf="@+id/recommendationPosition"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,9 +33,21 @@
         android:id="@+id/recommendationRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="36dp"
-        android:text="TextView"
+        android:layout_marginEnd="44dp"
+        android:layout_marginTop="40dp"
+        android:text="Price"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recommendationPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/recommendationRating"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

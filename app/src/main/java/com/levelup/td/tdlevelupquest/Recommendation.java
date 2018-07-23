@@ -187,29 +187,6 @@ public class Recommendation extends Activity {
                             counter++;
 
                         }
-//                        int count = 0;
-//                        List<Place> finalPlaces= new ArrayList<Place>();
-//                        Log.d("wwe","PRICE LEVEL" + pickedPlacePriceLevel);
-//                        int finalPriceLevel = pickedPlacePriceLevel;
-//                        if(pickedPlacePriceLevel == -1){
-//                            finalPriceLevel = 5;
-//                        }
-//                        Log.d("wed","Display Size: " + displayedPlaces.size());
-//                        for(int i = 0; i < displayedPlaces.size(); ++i){
-//                            Log.d("wwd","dispalyedPlaces" + displayedPlaces.get(i).integer);
-//                            if((displayedPlaces.get(i).integer <= finalPriceLevel)&&(count < 3)){
-//                                finalPlaces.add(displayedPlaces.get(i).place);
-//                                ++count;
-//                            }
-//                        }
-//
-//                        RecommendationAdapter adapter = new RecommendationAdapter(finalPlaces,transactionsMap);
-//                        ListView listView = findViewById(R.id.recommendationList);
-//                        listView.setAdapter(adapter);
-//                        Log.d("look","loading list view "+finalPlaces.size());
-//                        for(int i = 0; i < finalPlaces.size();++i){
-//                            Log.d("wed","Final Results: " + finalPlaces.get(i).getName());
-//                        }
                         autocompletePredictions.release();
                     }
                 });
@@ -283,6 +260,7 @@ public class Recommendation extends Activity {
             //set textvalue
             ((TextView)result.findViewById(R.id.recommendationPosition)).setText(i + 1 + ".");
             ((TextView)result.findViewById(R.id.recommendationName)).setText(myNewPlace.getName());
+            ((TextView)result.findViewById(R.id.recommendationPrice)).setText("" + ((myNewPlace.getPriceLevel() < 0) ? "  N/A" : myNewPlace.getPriceLevel() ));
             ((TextView)result.findViewById(R.id.recommendationRating)).setText("" + ((myNewPlace.getRating() < 0) ? "N/A" : myNewPlace.getRating() ));
             Log.d("Loading","here");
             return result;
