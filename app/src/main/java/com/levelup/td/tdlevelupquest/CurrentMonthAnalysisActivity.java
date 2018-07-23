@@ -74,6 +74,7 @@ public class CurrentMonthAnalysisActivity extends AppCompatActivity{
                         setupLineGraph();
                     }
                 });
+        LaunchActivity.initDrawer(CurrentMonthAnalysisActivity.this,this);
     }
     private void setupData(JSONObject jsonObject){
         try {

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.mikepenz.materialdrawer.Drawer;
+
 public class CreateGoalsActivity extends AppCompatActivity {
 
     private int count = 0;
@@ -58,7 +60,6 @@ public class CreateGoalsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), card_display.class);
                 startActivity(intent);
-                finish();
             }
         });
 

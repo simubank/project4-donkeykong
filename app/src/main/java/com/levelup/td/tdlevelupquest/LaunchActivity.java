@@ -82,9 +82,9 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
         requestQueue.add(jsonObjectRequest);
     }
 
-    public static void initDrawer (final Activity activity, Context context){
+    public static void initDrawer (final Activity activity, Context context) {
 
-        Drawer result = new DrawerBuilder()
+         Drawer result = new DrawerBuilder()
                 .withActivity(activity)
                 .withToolbar(new Toolbar(context))
                 .withActionBarDrawerToggle(false)
@@ -109,38 +109,29 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                             case(2):
                                 Intent intent = new Intent(view.getContext(), MainScreenActivity.class);
                                 view.getContext().startActivity(intent);
-                                activity.finish();
                                 break;
                             case(3):
                                 Intent intent2 = new Intent(view.getContext(), CreateGoalsActivity.class);
                                 view.getContext().startActivity(intent2);
-                                activity.finish();
                                 break;
                             case(4):
                                 Intent intent3 = new Intent(view.getContext(), Recommendation.class);
                                 view.getContext().startActivity(intent3);
-                                activity.finish();
                                 break;
                             case(5):
                                 Intent intent4 = new Intent(view.getContext(), AnalyzeSpendingActivity.class);
                                 view.getContext().startActivity(intent4);
-                                activity.finish();
                                 break;
-                            case(6):
+                            case (6):
                                 Intent intent5 = new Intent(view.getContext(), Recommendation.class);
                                 view.getContext().startActivity(intent5);
-                                activity.finish();
                                 break;
-
-
                         }
-
-
                         return true;
                     }
                 })
                 .build();
-        }
+    }
 
 }
 
