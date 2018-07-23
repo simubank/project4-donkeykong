@@ -14,8 +14,7 @@
     <string name="dollar_amount_2">$ %1$s Canadian Dollars</string>
     <string name="dollar_amount_3">$ %1$s Canadian Dollars</string>
     <string name="dollar_amount_4">$ %1$s Canadian Dollars</string>
-
-
+    <string name="title_activity_account_info">AccountInfo</string>
 
 
 </resources>

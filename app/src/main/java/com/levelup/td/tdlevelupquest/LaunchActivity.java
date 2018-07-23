@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.levelup.td.tdlevelupquest.Utils.AccountInfo;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -98,7 +99,7 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                         new SecondaryDrawerItem().withName("Analyze Spending").withIcon(GoogleMaterial.Icon.gmd_multiline_chart),
                         // new SecondaryDrawerItem().withName("Invest").withIcon(GoogleMaterial.Icon.gmd_attach_money),
                         //new SecondaryDrawerItem().withName("Test Button | Card View").withIcon(GoogleMaterial.Icon.gmd_home),
-                        new SecondaryDrawerItem().withName("Settings").withIcon(GoogleMaterial.Icon.gmd_settings)
+                        new SecondaryDrawerItem().withName("Account Information").withIcon(GoogleMaterial.Icon.gmd_settings)
 
                 )
                 .withDrawerWidthPx(850)
@@ -123,7 +124,7 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
                                 view.getContext().startActivity(intent4);
                                 break;
                             case (6):
-                                Intent intent5 = new Intent(view.getContext(), Recommendation.class);
+                                Intent intent5 = new Intent(view.getContext(), AccountInfo.class);
                                 view.getContext().startActivity(intent5);
                                 break;
                         }

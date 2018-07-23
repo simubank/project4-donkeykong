@@ -39,6 +39,10 @@
         <activity
             android:name=".Utils.PlanDisplay"
             android:label="@string/title_activity_plan_display"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Utils.AccountInfo"
+            android:label="@string/title_activity_account_info"
             android:theme="@style/AppTheme"></activity>
     </application>
 
