@@ -1,11 +1,17 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#66a266"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#ededed"
+    android:background="#66a266"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-
     >
 
     <RelativeLayout
@@ -28,7 +34,7 @@
             android:layout_marginTop="15dp"
             android:textColor="#fff"
             android:textSize="25dp"
-            android:text="CREATE GOALS"
+            android:text="Create Your List"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,6 +44,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="375dp"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:elevation="15dp"
         app:cardCornerRadius="10dp"
         android:layout_marginTop="10dp"
@@ -53,21 +60,21 @@
             <!-- A photo on the left. We'll just use the launcher icon. -->
             <ImageView
                 android:id="@+id/icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@mipmap/atm"
                 />
 
             <!-- The person name, on top -->
             <EditText
                 android:id="@+id/hint_field_1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/icon"
                 android:layout_toRightOf="@+id/icon"
@@ -80,7 +87,7 @@
 
             <EditText
                 android:id="@+id/hint_field_2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:layout_toEndOf="@+id/icon"
@@ -88,10 +95,23 @@
                 android:layout_below="@+id/hint_field_1"
                 android:hint="Price ($)"
                 />
-
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="3dp"
+                android:textColor="#000000"
+                android:layout_below="@id/hint_field_2"
+                android:text="Antao Production | Design."
+                android:gravity="center" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
+
+
+
+
+
 
     <android.support.v7.widget.CardView
         android:layout_width="375dp"
@@ -111,25 +131,25 @@ android:visibility="gone"
 
             <!-- A photo on the left. We'll just use the launcher icon. -->
             <ImageView
-                android:id="@+id/icon1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/icon"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@mipmap/atm"
                 />
 
             <!-- The person name, on top -->
             <EditText
-                android:id="@+id/hint_field_11"
-                android:layout_width="wrap_content"
+                android:id="@+id/hint_field_1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/icon1"
-                android:layout_toRightOf="@+id/icon1"
+                android:layout_toEndOf="@+id/icon"
+                android:layout_toRightOf="@+id/icon"
                 android:layout_alignParentTop="true"
                 android:textSize="20sp"
                 android:hint="Item"                />
@@ -138,19 +158,31 @@ android:visibility="gone"
 
 
             <EditText
-                android:id="@+id/hint_field_21"
-                android:layout_width="wrap_content"
+                android:id="@+id/hint_field_2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:layout_toEndOf="@+id/icon1"
-                android:layout_toRightOf="@+id/icon1"
-                android:layout_below="@+id/hint_field_11"
+                android:layout_toEndOf="@+id/icon"
+                android:layout_toRightOf="@+id/icon"
+                android:layout_below="@+id/hint_field_1"
                 android:hint="Price ($)"
                 />
-
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="3dp"
+                android:textColor="#000000"
+                android:layout_below="@id/hint_field_2"
+                android:text="Antao Production | Design."
+                android:gravity="center" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
+
+
+
+
 
     <android.support.v7.widget.CardView
         android:layout_width="375dp"
@@ -171,25 +203,25 @@ android:visibility="gone"
 
             <!-- A photo on the left. We'll just use the launcher icon. -->
             <ImageView
-                android:id="@+id/icon2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/icon"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@mipmap/atm"
                 />
 
             <!-- The person name, on top -->
             <EditText
-                android:id="@+id/hint_field_12"
-                android:layout_width="wrap_content"
+                android:id="@+id/hint_field_1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/icon2"
-                android:layout_toRightOf="@+id/icon2"
+                android:layout_toEndOf="@+id/icon"
+                android:layout_toRightOf="@+id/icon"
                 android:layout_alignParentTop="true"
                 android:textSize="20sp"
                 android:hint="Item"                />
@@ -198,16 +230,24 @@ android:visibility="gone"
 
 
             <EditText
-                android:id="@+id/hint_field_22"
-                android:layout_width="wrap_content"
+                android:id="@+id/hint_field_2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:layout_toEndOf="@+id/icon2"
-                android:layout_toRightOf="@+id/icon2"
-                android:layout_below="@+id/hint_field_12"
+                android:layout_toEndOf="@+id/icon"
+                android:layout_toRightOf="@+id/icon"
+                android:layout_below="@+id/hint_field_1"
                 android:hint="Price ($)"
                 />
-
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="3dp"
+                android:textColor="#000000"
+                android:layout_below="@id/hint_field_2"
+                android:text="Antao Production | Design."
+                android:gravity="center" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView><android.support.v7.widget.CardView
@@ -229,25 +269,25 @@ android:visibility="gone"
 
         <!-- A photo on the left. We'll just use the launcher icon. -->
         <ImageView
-            android:id="@+id/icon3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/icon"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/atm"
             />
 
         <!-- The person name, on top -->
         <EditText
-            android:id="@+id/hint_field_13"
-            android:layout_width="wrap_content"
+            android:id="@+id/hint_field_1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/icon3"
-            android:layout_toRightOf="@+id/icon3"
+            android:layout_toEndOf="@+id/icon"
+            android:layout_toRightOf="@+id/icon"
             android:layout_alignParentTop="true"
             android:textSize="20sp"
             android:hint="Item"                />
@@ -256,16 +296,92 @@ android:visibility="gone"
 
 
         <EditText
-            android:id="@+id/hint_field_23"
-            android:layout_width="wrap_content"
+            android:id="@+id/hint_field_2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:layout_toEndOf="@+id/icon3"
-            android:layout_toRightOf="@+id/icon3"
-            android:layout_below="@+id/hint_field_13"
+            android:layout_toEndOf="@+id/icon"
+            android:layout_toRightOf="@+id/icon"
+            android:layout_below="@+id/hint_field_1"
             android:hint="Price ($)"
             />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="3dp"
+            android:textColor="#000000"
+            android:layout_below="@id/hint_field_2"
+            android:text="Antao Production | Design."
+            android:gravity="center" />
 
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+
+<android.support.v7.widget.CardView
+    android:layout_width="375dp"
+    android:layout_height="wrap_content"
+    android:elevation="15dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginTop="10dp"
+    android:id="@+id/card5"
+    android:visibility="gone"
+
+    >
+
+    <!-- Content inside the card. -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp" >
+
+        <!-- A photo on the left. We'll just use the launcher icon. -->
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/atm"
+            />
+
+        <!-- The person name, on top -->
+        <EditText
+            android:id="@+id/hint_field_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/icon"
+            android:layout_toRightOf="@+id/icon"
+            android:layout_alignParentTop="true"
+            android:textSize="20sp"
+            android:hint="Item"                />
+
+        <!-- The age, in the bottom -->
+
+
+        <EditText
+            android:id="@+id/hint_field_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_toEndOf="@+id/icon"
+            android:layout_toRightOf="@+id/icon"
+            android:layout_below="@+id/hint_field_1"
+            android:hint="Price ($)"
+            />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="3dp"
+            android:textColor="#000000"
+            android:layout_below="@id/hint_field_2"
+            android:text="Antao Production | Design."
+            android:gravity="center" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>
@@ -279,17 +395,22 @@ android:visibility="gone"
 
         <Button
             android:id="@+id/doneButton"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="DONE"
-            android:background="#ffffff"
-            android:textColor="#163d22"
+            android:text="Done"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="20dp"
-
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
             />
+
+
 
 
     <RelativeLayout
@@ -303,8 +424,8 @@ android:visibility="gone"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/circle"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="80dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="60dp"
         android:clickable="true"
         />
 
@@ -313,10 +434,10 @@ android:visibility="gone"
             android:layout_height="50dp"
             android:text="+"
             android:textSize="50dp"
-            android:textColor="#163D22"
+            android:textColor="#ffffff"
             android:gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="60dp"
             />
 
     </RelativeLayout>
@@ -327,3 +448,4 @@ android:visibility="gone"
 
 
 </LinearLayout>
+</ScrollView>
