@@ -1,6 +1,7 @@
 package com.levelup.td.tdlevelupquest.Utils;
 
 import android.content.res.Resources;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,15 +9,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Button;
 
+import com.levelup.td.tdlevelupquest.AnalyzeSpendingActivity;
+import com.levelup.td.tdlevelupquest.LaunchActivity;
+import com.levelup.td.tdlevelupquest.MainScreenActivity;
 import com.levelup.td.tdlevelupquest.R;
 
 public class PlanDisplay extends AppCompatActivity {
+
+    Button b1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_display);
+        LaunchActivity.initDrawer(PlanDisplay.this,this);
+
+        b1 = findViewById(R.id.pickerButtonSaveNow);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), AnalyzeSpendingActivity.class);
+                view.getContext().startActivity(intent);
+            }
+        });
 
 
 
