@@ -30,6 +30,7 @@ public class CreateGoalsActivity extends AppCompatActivity {
         c2 = findViewById(R.id.card2);
         c3 = findViewById(R.id.card3);
         c4 = findViewById(R.id.card4);
+        //For transferring to cardview page
         done = findViewById(R.id.doneButton);
 
         iv.setOnClickListener(new View.OnClickListener() {
