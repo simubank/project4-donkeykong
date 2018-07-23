@@ -75,6 +75,11 @@ public class Recommendation extends Activity {
         // Construct a PlaceDetectionClient.
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
         LaunchActivity.initDrawer(Recommendation.this,this);
+        ListView listView = findViewById(R.id.recommendationList);
+        LayoutInflater inflater = getLayoutInflater();
+        ViewGroup header = (ViewGroup)inflater.inflate(R.layout.header_recommendation, listView, false);
+        listView.addHeaderView(header, null, false);
+
         NetworkHelper.getInstance().botAPIGetRequest("https://dev.botsfinancial.com/api/simulatedaccounts/873a24c9-1852-432a-8185-fb6e94d52ad1_b59fad0d-24ea-464c-a4cb-c2c1ee9702d9/simulatedtransactions",
                 getApplicationContext(), new APICallback() {
                     @Override

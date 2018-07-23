@@ -4,42 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="#66a266"
     android:orientation="vertical"
 
     tools:context="com.levelup.td.tdlevelupquest.LaunchActivity">
-
-    <ImageView
-        android:id="@+id/read_commitment"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_gravity="left"
-        android:src="@mipmap/ready_commitment_white"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="144dp" />
-
-    <TextView
-        android:id="@+id/merchantTextView"
-        android:layout_width="291dp"
-        android:layout_height="95dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="Recommendations for you
-"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/placesButton"
         android:layout_width="273dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/buttonshape"
@@ -47,10 +22,10 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:text="Let's Go"
+        android:text="Choose My Location"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/recommendationList"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/merchantTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent" />
@@ -59,12 +34,55 @@
         android:id="@+id/recommendationList"
         android:layout_width="371dp"
         android:layout_height="200dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="400dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="#163D22"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:text="Recommendations"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/merchantTextView"
+        android:layout_width="291dp"
+        android:layout_height="95dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="416dp"
+        android:gravity="center"
+        android:text="Recommendations for you"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.52" />
 
 </android.support.constraint.ConstraintLayout>
 
