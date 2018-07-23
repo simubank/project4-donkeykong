@@ -19,16 +19,34 @@ tools:context="com.levelup.td.tdlevelupquest.LaunchActivity">
     <ImageView
         android:id="@+id/read_commitment"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_marginTop="6dp"
         android:layout_gravity="left"
-        android:src="@mipmap/bull3"
+        android:src="@mipmap/tdlogo"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Savings Plans"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="2dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="We've analyzed your spending habits and made a plan for you to save-up for what you want."
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="2dp"/>
 
-
-    <include layout="@layout/custom_cardview"
-        >
+    <include layout="@layout/custom_cardview">
     </include>
 
     <include layout="@layout/custom_cardview_fast_food">

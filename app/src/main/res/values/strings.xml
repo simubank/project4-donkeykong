@@ -2,4 +2,20 @@
     <string name="app_name">TD MySave</string>
     <string name="title_activity_card_display">card_display</string>
     <string name="title_activity_recommendation">Recommendation</string>
+    <string name="title_activity_plan_display">PlanDisplay</string>
+
+    <string name="item_get_now">Get the %1$s Now.</string>
+    <string name="item_get_save">Save for Your %1$s.</string>
+
+
+    <string name="title_savings_plan">Your %1$s Savings Plan.</string>
+
+    <string name="dollar_amount_1">$ %1$s Canadian Dollars</string>
+    <string name="dollar_amount_2">$ %1$s Canadian Dollars</string>
+    <string name="dollar_amount_3">$ %1$s Canadian Dollars</string>
+    <string name="dollar_amount_4">$ %1$s Canadian Dollars</string>
+
+
+
+
 </resources>

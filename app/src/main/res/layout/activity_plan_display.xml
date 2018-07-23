@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#163D22">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#163D22"
+
+        tools:context="com.levelup.td.tdlevelupquest.LaunchActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#163D22">
+        <ImageView
+            android:id="@+id/read_commitment"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="left"
+            android:src="@mipmap/ready_commitment_white"
+            />
+        <TextView
+            android:id="@+id/plantitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="@string/title_savings_plan"
+            android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/savingstext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginTop="14dp"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:layout_margin="8dp"
+                android:text="Your Savings Plan. Made Using our Algorithms and Data models. Just for you."
+                android:layout_gravity="center_horizontal" />
+
+
+            <TextView
+                android:id="@+id/top_item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="15dp"
+                android:text="Your Top Item: "
+                android:layout_gravity="left" />
+
+            <TextView
+                android:id="@+id/top_item_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="15dp"
+                android:text="@string/dollar_amount_1"
+                android:layout_gravity="left" />
+
+            <TextView
+                android:id="@+id/finances_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:text="Your Finances, Galen."
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/balance_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="15dp"
+                android:text="Your Current Balance: "
+                android:layout_gravity="left" />
+
+            <TextView
+                android:id="@+id/current_balance_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="15dp"
+                android:text="@string/dollar_amount_2"
+                android:layout_gravity="left" />
+
+            <TextView
+                android:id="@+id/balance_total_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="15dp"
+                android:text="Your Total List Cost: "
+                android:layout_gravity="left" />
+
+            <TextView
+                android:id="@+id/total_balance_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="15dp"
+                android:text="@string/dollar_amount_3"
+                android:layout_gravity="left" />
+
+            <TextView
+                android:id="@+id/item_get_now_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:text="@string/item_get_now"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/gifticon"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/balance_after_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="15dp"
+                android:text="Balance After Cost: "
+                android:layout_gravity="left" />
+
+            <TextView
+                android:id="@+id/balance_after_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#ff0000"
+                android:layout_marginLeft="15dp"
+                android:text="@string/dollar_amount_4"
+                android:layout_gravity="left" />
+
+            <TextView
+                android:id="@+id/item_get_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:text="@string/item_get_save"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/savingstextrecommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginTop="19dp"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:layout_margin="11dp"
+                android:text="Save for your purchase by customizing and setting your own limits on your spending so that you can spend more, on the things you love. In the meantime, why not invest that money with TD? We will keep your money working hard for you, even when you need to take a break."
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+            android:id="@+id/pickerButton"
+            android:text="Save Now"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="70dp"
+            android:textSize="30sp"
+            android:layout_width="270dp"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#163D22"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            />
+
+            <Button
+                android:id="@+id/pickerButtonInvest"
+                android:text="Invest"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:textSize="30sp"
+                android:layout_width="270dp"
+                android:layout_height="60dp"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#163D22"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                />
+        <TextView
+            android:id="@+id/infoswipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginTop="30dp"
+            android:textColor="#ffffff"
+            android:text="Swipe from left for options."
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"/>
+
+            <ImageView
+                android:id="@+id/chair"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_marginTop="6dp"
+                android:layout_gravity="left"
+                android:src="@mipmap/leatherchair"
+                />
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#ffffff"
+                android:text="TD. The Ready Commitment."
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/copyright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:text="Copyright 2018. TDHacks."
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="18dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
