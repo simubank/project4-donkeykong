@@ -70,6 +70,17 @@ public class MainScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
 
+       Button done = findViewById(R.id.pickerButton);
+
+        done.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), CreateGoalsActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         // TODO: Start using the Places API.z
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
