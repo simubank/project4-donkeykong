@@ -23,6 +23,7 @@ public class card_display extends Activity {
         View view3 = findViewById(R.id.card_view_coffee);
         View view4 = findViewById(R.id.card_view_ride);
 
+
         //Food Savings Below
         view1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,9 +35,10 @@ public class card_display extends Activity {
                 String text = String.format(res.getString(R.string.title_savings_plan), "Electronics");
 
 
-                intent.putExtra("PLAN_TYPE", "Electronics");
+                intent.putExtra("PLAN_TYPE", "Food");
                 intent.putExtra("TOP_COST", "486.69");
                 intent.putExtra("TOTAL_COST", "602.44");
+                intent.putExtra("ITEM_NAME", "Nintendo Switch");
 
 
                 startActivity(intent);
@@ -49,6 +51,12 @@ public class card_display extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), PlanDisplay.class);
+
+                intent.putExtra("PLAN_TYPE", "Electronics");
+                intent.putExtra("TOP_COST", "486.69");
+                intent.putExtra("TOTAL_COST", "602.44");
+                intent.putExtra("ITEM_NAME", "Nintendo Switch");
+
                 startActivity(intent);
                 finish();
             }
@@ -59,6 +67,12 @@ public class card_display extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), PlanDisplay.class);
+
+                intent.putExtra("PLAN_TYPE", "Coffee");
+                intent.putExtra("TOP_COST", "486.69");
+                intent.putExtra("TOTAL_COST", "602.44");
+                intent.putExtra("ITEM_NAME", "Nintendo Switch");
+
                 startActivity(intent);
                 finish();
             }
@@ -69,6 +83,12 @@ public class card_display extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), PlanDisplay.class);
+
+                intent.putExtra("PLAN_TYPE", "Rides");
+                intent.putExtra("TOP_COST", "486.69");
+                intent.putExtra("TOTAL_COST", "602.44");
+                intent.putExtra("ITEM_NAME", "Nintendo Switch");
+
                 startActivity(intent);
                 finish();
             }
