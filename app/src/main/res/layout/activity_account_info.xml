@@ -61,7 +61,7 @@
                     android:textColorHint="#ffffff"
                     android:shadowColor="#FFFFFF"
                     android:inputType="textEmailAddress"
-                    android:hint="Card Number/Email" />
+                    android:hint="Name" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Password Label -->
@@ -74,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:hint="Password"/>
+                    android:hint="Card Number"/>
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
