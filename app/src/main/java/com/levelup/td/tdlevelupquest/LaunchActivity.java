@@ -52,11 +52,6 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
 
         final Activity activity = this;
 
-
-        View someView = findViewById(R.id.textView);
-        View root = someView.getRootView();
-        root.getBackground().setColorFilter(Color.parseColor("#006400"), PorterDuff.Mode.DARKEN);
-
         //String url = "https://api.uclassify.com/v1/uClassify/Topics/classify/?readKey=sXvXN9MJP0DE&text=macbook";
         //JsonCall(url);
 
