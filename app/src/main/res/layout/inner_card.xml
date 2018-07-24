@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:textSize="12sp"
+        android:text="Mutual Funds is a family of organized funds that are managed by industry professionals. With over 60 different funds to choose from, there's a TD Mutual Fund perfect for you."
+        />
+
+</LinearLayout>
