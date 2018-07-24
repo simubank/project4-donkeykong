@@ -51,7 +51,7 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_launch);
 
         final Activity activity = this;
-        
+
         //String url = "https://api.uclassify.com/v1/uClassify/Topics/classify/?readKey=sXvXN9MJP0DE&text=macbook";
         //JsonCall(url);
 
