@@ -7,10 +7,12 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_height="55dp"
         android:textSize="12sp"
-        android:text="Mutual Funds is a family of organized funds that are managed by industry professionals. With over 60 different funds to choose from, ranging from privacy to security to various other sectors, there's a TD Mutual Fund perfect for you."
-        />
+        android:text="Investments that get return on a fixed schedule (most commonly bonds and ETFs). These are safer investments that can be made with confidence."
 
+        >
+
+    </TextView>
 
 </LinearLayout>

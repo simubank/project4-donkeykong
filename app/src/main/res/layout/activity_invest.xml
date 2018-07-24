@@ -1,4 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,109 +15,123 @@
     android:background="#ededed"
     >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#163D22"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal"
-        >
-
-        <TextView
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#163D22"
             android:gravity="center_horizontal"
-            android:id="@+id/switchToPieChartButton"
-            android:layout_width="400dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
-            android:textColor="#fff"
-            android:textSize="25dp"
-            android:text="Investment Options"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </RelativeLayout>
+            app:layout_constraintTop_toTopOf="parent">
 
-    <com.alespero.expandablecardview.ExpandableCardView
-        android:id="@+id/profile"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:title="                         Mutual Funds"
-        app:inner_view="@layout/inner_card"
-        app:expandOnClick="true"
-        app:animationDuration="300"
-        app:startExpanded="false"
-        android:stateListAnimator="@null"
-        android:layout_gravity="center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+            <TextView
+                android:id="@+id/switchToPieChartButton"
+                android:layout_width="400dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                android:text="Investment Options"
+                android:textColor="#fff"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </RelativeLayout>
 
-        />
+        <com.alespero.expandablecardview.ExpandableCardView
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:stateListAnimator="@null"
+            app:animationDuration="300"
+            app:expandOnClick="true"
+            app:inner_view="@layout/inner_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile3"
+            app:startExpanded="false"
+            app:title="                         Mutual Funds" />
 
-    <com.alespero.expandablecardview.ExpandableCardView
-        android:id="@+id/profile1"
-        android:layout_marginTop="0dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:title="                          GICs"
-        app:inner_view="@layout/inner_card"
-        app:expandOnClick="true"
-        app:animationDuration="300"
-        app:startExpanded="false"
-        android:stateListAnimator="@null"
-        android:layout_gravity="center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        <com.alespero.expandablecardview.ExpandableCardView
+            android:id="@+id/profile1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:stateListAnimator="@null"
+            app:animationDuration="300"
+            app:expandOnClick="true"
+            app:inner_view="@layout/inner_card_gics"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile"
+            app:startExpanded="false"
+            app:title="                          GICs" />
 
-    <com.alespero.expandablecardview.ExpandableCardView
-        android:id="@+id/profile2"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:title="                  Term Deposits"
-        app:inner_view="@layout/inner_card"
-        app:expandOnClick="true"
-        app:animationDuration="300"
-        app:startExpanded="false"
-        android:stateListAnimator="@null"
-        android:layout_gravity="center_horizontal"
+        <com.alespero.expandablecardview.ExpandableCardView
+            android:id="@+id/profile2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:stateListAnimator="@null"
+            app:animationDuration="300"
+            app:expandOnClick="true"
 
-        />
-    <com.alespero.expandablecardview.ExpandableCardView
-        android:id="@+id/profile3"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:title="      Fixed Income Investments"
-        app:inner_view="@layout/inner_card"
-        app:expandOnClick="true"
-        app:animationDuration="300"
-        app:startExpanded="false"
-        android:stateListAnimator="@null"
-        android:layout_gravity="center_horizontal"
+            app:inner_view="@layout/inner_card_termdeposits"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+            app:startExpanded="false"
+            app:title="                  Term Deposits" />
 
-        />
+        <com.alespero.expandablecardview.ExpandableCardView
+            android:id="@+id/profile3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:stateListAnimator="@null"
+            app:animationDuration="300"
+            app:expandOnClick="true"
 
-    <com.alespero.expandablecardview.ExpandableCardView
-        android:id="@+id/profile4"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:title="                         Stocks "
-        app:inner_view="@layout/inner_card"
-        app:expandOnClick="true"
-        app:animationDuration="300"
-        app:startExpanded="false"
-        android:stateListAnimator="@null"
-        android:layout_gravity="center_horizontal"
-        />
+            app:inner_view="@layout/inner_card_fii"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile2"
+            app:startExpanded="false"
+            app:title="      Fixed Income Investments" />
 
-</LinearLayout>
+        <com.alespero.expandablecardview.ExpandableCardView
+            android:id="@+id/profile4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:stateListAnimator="@null"
+            app:animationDuration="300"
+            app:expandOnClick="true"
+            app:inner_view="@layout/inner_card_stocks"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile1"
+            app:startExpanded="false"
+            app:title="                         Stocks " />
+
+</android.support.constraint.ConstraintLayout>
 </ScrollView>
