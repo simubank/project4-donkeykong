@@ -29,12 +29,14 @@
             android:textSize="25dp"
             android:layout_marginTop="30dp"
             android:textColor="#ffffff"
-            android:text="Welcome to Your Account, Galen."
+            android:gravity="center"
+            android:text="Switch or Manage Your Account."
             android:layout_gravity="center_horizontal" />
 
         <ImageView android:src="@mipmap/ladyinchair"
             android:layout_width="wrap_content"
             android:layout_height="72dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="24dp"
             android:layout_gravity="center_horizontal" />
 
@@ -44,7 +46,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="56dp"
             android:paddingLeft="24dp"
-            android:paddingRight="24dp">
+            android:paddingRight="24dp"
+            android:color="#ededed">
 
 
 
@@ -61,7 +64,7 @@
                     android:textColorHint="#ffffff"
                     android:shadowColor="#FFFFFF"
                     android:inputType="textEmailAddress"
-                    android:hint="Name" />
+                    android:hint="Email" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Password Label -->
