@@ -42,15 +42,7 @@ cardView:cardBackgroundColor="#fffcfc">
         android:text="Save over $70 over 1 month by getting your coffee elsewhere. We know you love your coffee, so why not make it easier to enjoy that Java?"
         android:textColor="#666"
         android:textSize="14dp" />
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/description"
-        android:textSize="4dp"
-        android:textColor="#000000"
-        android:text="Antao Production | Design."
-        android:gravity="center" />
+
     <ImageView
         android:id="@+id/greenbotdraw"
         android:layout_width="match_parent"
