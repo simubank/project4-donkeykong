@@ -44,6 +44,9 @@
             android:name=".Utils.AccountInfo"
             android:label="@string/title_activity_account_info"
             android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".WebViewActivity"
+></activity>
     </application>
 
 </manifest>

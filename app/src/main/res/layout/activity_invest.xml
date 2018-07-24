@@ -57,7 +57,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile3"
             app:startExpanded="false"
-            app:title="                         Mutual Funds" />
+            app:title="Mutual Funds" />
 
         <com.alespero.expandablecardview.ExpandableCardView
             android:id="@+id/profile1"
@@ -75,7 +75,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile"
             app:startExpanded="false"
-            app:title="                          GICs" />
+            app:title="GICs" />
 
         <com.alespero.expandablecardview.ExpandableCardView
             android:id="@+id/profile2"
@@ -94,7 +94,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
             app:startExpanded="false"
-            app:title="                  Term Deposits" />
+            app:title="Term Deposits" />
 
         <com.alespero.expandablecardview.ExpandableCardView
             android:id="@+id/profile3"
@@ -113,7 +113,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile2"
             app:startExpanded="false"
-            app:title="      Fixed Income Investments" />
+            app:title="Fixed Income Investments" />
 
         <com.alespero.expandablecardview.ExpandableCardView
             android:id="@+id/profile4"
@@ -131,10 +131,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile1"
             app:startExpanded="false"
-            app:title="                         Stocks " />
+            app:title="Stocks " />
 
         <Button
-            android:id="@+id/bookappoitnment"
+            android:id="@+id/bookappointment"
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
@@ -148,7 +148,6 @@
             android:shadowDy="0"
             android:shadowRadius="5"
             android:text="Book an Appointment"
-            android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

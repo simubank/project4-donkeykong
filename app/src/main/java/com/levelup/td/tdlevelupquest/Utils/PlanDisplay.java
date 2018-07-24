@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Button;
 
 import com.levelup.td.tdlevelupquest.AnalyzeSpendingActivity;
+import com.levelup.td.tdlevelupquest.InvestActivity;
 import com.levelup.td.tdlevelupquest.LaunchActivity;
 import com.levelup.td.tdlevelupquest.MainScreenActivity;
 import com.levelup.td.tdlevelupquest.R;
@@ -23,6 +24,7 @@ import org.json.JSONObject;
 public class PlanDisplay extends AppCompatActivity {
 
     Button b1;
+    Button b2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class PlanDisplay extends AppCompatActivity {
         setContentView(R.layout.activity_plan_display);
         LaunchActivity.initDrawer(PlanDisplay.this,this);
 
-        b1 = findViewById(R.id.pickerButton);
+        b1 = findViewById(R.id.pickerButtonSaveNow);
 
         b1.setOnClickListener(new View.OnClickListener() {
 
@@ -40,6 +42,20 @@ public class PlanDisplay extends AppCompatActivity {
                 view.getContext().startActivity(intent);
             }
         });
+
+        b2 = findViewById(R.id.pickerButtonInvest);
+
+        b2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), InvestActivity
+                        .class);
+                view.getContext().startActivity(intent);
+            }
+        });
+
+
 
         //intent.putExtra("PLAN_TYPE", "Electronics");
         //intent.putExtra("TOP_COST", "486.69");
