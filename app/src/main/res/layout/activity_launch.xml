@@ -8,7 +8,9 @@
     android:background="#000000"
 
     tools:context="com.levelup.td.tdlevelupquest.LaunchActivity">
-
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
 
     <ImageView
         android:id="@+id/imageView"
